@@ -16,10 +16,12 @@ namespace LethalVibrations
 
             Patches.PlayerControllerBPatches.Init(Logger);
             Patches.ItemChargerPatches.Init(Logger);
+            Patches.WalkieTalkiePatches.Init(Logger);
 
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(Patches.PlayerControllerBPatches));
             harmony.PatchAll(typeof(Patches.ItemChargerPatches));
+            harmony.PatchAll(typeof(Patches.WalkieTalkiePatches));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
         }
