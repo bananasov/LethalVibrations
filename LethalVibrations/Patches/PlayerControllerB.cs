@@ -29,8 +29,9 @@ namespace LethalVibrations.Patches
 
         [HarmonyPatch(typeof(PlayerControllerB), "KillPlayerClientRpc")]
         [HarmonyPostfix]
-        static void KillPlayerPatch()
+        static void KillPlayerPatch(PlayerControllerB __instance)
         {
+            if (__instance.playerClientId != 0) { return; }
             Logger.LogInfo($"KillPlayer got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilled.Value)

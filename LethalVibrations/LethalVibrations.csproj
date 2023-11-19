@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>net47</TargetFramework>
 		<AssemblyName>LethalVibrations</AssemblyName>
 		<Description>Lethal Company mod that makes your sex toys vibrate.</Description>
 		<Version>1.0.0</Version>
@@ -29,6 +29,51 @@
 	<ItemGroup>
 	  <Reference Include="Assembly-CSharp">
 	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\Assembly-CSharp.dll</HintPath>
+	  </Reference>
+	  <Reference Include="mscorlib">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\mscorlib.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.ComponentModel.Composition">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.ComponentModel.Composition.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Core">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Data">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Data.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Drawing">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Drawing.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.IO.Compression">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.IO.Compression.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.IO.Compression.FileSystem">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.IO.Compression.FileSystem.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Net.Http">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Net.Http.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Numerics">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Numerics.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Runtime">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Runtime.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Runtime.Serialization">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Runtime.Serialization.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Transactions">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Transactions.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Xml">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Xml.dll</HintPath>
+	  </Reference>
+	  <Reference Include="System.Xml.Linq">
+	    <HintPath>..\..\..\SteamLibrary\steamapps\common\Lethal Company\Lethal Company_Data\Managed\System.Xml.Linq.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 </Project>
