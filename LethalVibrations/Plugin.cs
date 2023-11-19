@@ -16,7 +16,7 @@ namespace LethalVibrations
 
             Patches.PlayerControllerB.Init(Logger);
 
-            var harmony = new Harmony("com.yourname.yourmod");
+            var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(Patches.PlayerControllerB));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
