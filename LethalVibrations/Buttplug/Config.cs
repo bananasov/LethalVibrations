@@ -12,8 +12,8 @@ namespace LethalVibrations.Buttplug
 
         internal static ConfigEntry<string> serverUri { get; set; }
 
-        internal static ConfigEntry<bool> vibrateDamageRecieved { get; set; }
-        internal static ConfigEntry<bool> vibrateDamageDealt { get; set; }
+        internal static ConfigEntry<bool> VibrateDamageRecieved { get; set; }
+        internal static ConfigEntry<bool> VibrateDamageDealt { get; set; }
 
         static Config()
         {
@@ -26,8 +26,8 @@ namespace LethalVibrations.Buttplug
                 "URI of the Intiface server."
             );
 
-            vibrateDamageRecieved = ConfigFile.Bind("Vibrations", "VibrateRecieved", true, "Vibrate when you recieve damage");
-            vibrateDamageDealt = ConfigFile.Bind("Vibrations", "VibrateDealt", true, "Vibrate when you deal damage");
+            VibrateDamageRecieved = ConfigFile.Bind("Vibrations", "VibrateRecieved", true, "Vibrate when you recieve damage");
+            VibrateDamageDealt = ConfigFile.Bind("Vibrations", "VibrateDealt", true, "Vibrate when you deal damage");
         }
     }
 }
