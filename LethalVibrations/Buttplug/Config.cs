@@ -8,16 +8,32 @@ namespace LethalVibrations.Buttplug
 {
     internal class Config
     {
-        internal static ConfigFile ConfigFile { get; set; }
+        private static ConfigFile ConfigFile { get; set; }
 
         internal static ConfigEntry<string> ServerUri { get; set; }
 
         internal static ConfigEntry<float> VibrateAmplifier { get; set; }
-        internal static ConfigEntry<bool> VibrateDamageRecieved { get; set; }
-        internal static ConfigEntry<bool> VibrateDamageDealt { get; set; }
-        internal static ConfigEntry<bool> VibrateKilled { get; set; }
-        internal static ConfigEntry<bool> VibrateWalkieTalkieRecieved { get; set; }
-        internal static ConfigEntry<bool> VibrateItemChargerCharge { get; set; }
+        
+        internal static ConfigEntry<bool> VibrateDamageReceivedEnabled { get; set; }
+        internal static ConfigEntry<int> VibrateDamageReceivedTime { get; set; }
+        internal static ConfigEntry<float> VibrateDamageReceivedAmplifier { get; set; }
+        
+        internal static ConfigEntry<bool> VibrateDamageDealtEnabled { get; set; }
+        internal static ConfigEntry<int> VibrateDamageDealtTime { get; set; }
+        internal static ConfigEntry<float> VibrateDamageDealtAmplifier { get; set; }
+        
+        internal static ConfigEntry<bool> VibrateKilledEnabled { get; set; }
+        internal static ConfigEntry<int> VibrateKilledTime { get; set; }
+        internal static ConfigEntry<float> VibrateKilledAmplifier { get; set; }
+
+        internal static ConfigEntry<bool> VibrateWalkieTalkieReceivedEnabled { get; set; }
+        internal static ConfigEntry<int> VibrateWalkieTalkieReceivedTime { get; set; }
+        internal static ConfigEntry<float> VibrateWalkieTalkieReceivedAmplifier { get; set; }
+
+        internal static ConfigEntry<bool> VibrateItemChargerChargeEnabled { get; set; }
+        internal static ConfigEntry<int> VibrateItemChargerChargeTime { get; set; }
+        internal static ConfigEntry<float> VibrateItemChargerChargeAmplifier { get; set; }
+
 
         static Config()
         {
@@ -32,11 +48,26 @@ namespace LethalVibrations.Buttplug
 
             VibrateAmplifier =
                 ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
-            VibrateDamageRecieved = ConfigFile.Bind("Vibrations", "VibrateRecieved", true, "Vibrate when you recieve damage");
-            VibrateDamageDealt = ConfigFile.Bind("Vibrations", "VibrateDealt", true, "Vibrate when you deal damage");
-            VibrateKilled = ConfigFile.Bind("Vibrations", "VibrateKilled", true, "Vibrate when you die");
-            VibrateItemChargerCharge = ConfigFile.Bind("Vibrations", "ItemCharge", true, "Vibrate when you charge an item");
-            VibrateWalkieTalkieRecieved = ConfigFile.Bind("Vibrations", "VibrateWalkieTalkieRecieved", true, "Vibrate when you recieve audio from the WalkieTalkie");
+            
+            VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
+            VibrateDamageReceivedTime = ConfigFile.Bind("Vibrations.DamageReceived", "Time", 1, "Length of time to vibrate for");
+            VibrateDamageReceivedAmplifier = ConfigFile.Bind("Vibrations.DamageReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
+            
+            VibrateDamageDealtEnabled = ConfigFile.Bind("Vibrations.DamageDealt", "Enabled", true, "Vibrate when you deal damage");
+            VibrateDamageDealtTime = ConfigFile.Bind("Vibrations.DamageDealt", "Time", 1, "Length of time to vibrate for");
+            VibrateDamageDealtAmplifier = ConfigFile.Bind("Vibrations.DamageDealt", "Amplifier", 0.0f, "Change the amplification of vibration");
+            
+            VibrateKilledEnabled = ConfigFile.Bind("Vibrations.PlayerKilled", "Enabled", true, "Vibrate when you die");
+            VibrateKilledTime = ConfigFile.Bind("Vibrations.PlayerKilled", "Time", 1, "Length of time to vibrate for");
+            VibrateKilledAmplifier = ConfigFile.Bind("Vibrations.PlayerKilled", "Amplifier", 0.0f, "Change the amplification of vibration");
+            
+            VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
+            VibrateItemChargerChargeTime = ConfigFile.Bind("Vibrations.ItemCharge", "Time", 1, "Length of time to vibrate for");
+            VibrateItemChargerChargeAmplifier = ConfigFile.Bind("Vibrations.ItemCharge", "Amplifier", 0.0f, "Change the amplification of vibration");
+            
+            VibrateWalkieTalkieReceivedEnabled = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Enabled", true, "Vibrate when you receive audio from the WalkieTalkie");
+            VibrateWalkieTalkieReceivedTime = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Time", 1, "Length of time to vibrate for");
+            VibrateWalkieTalkieReceivedAmplifier = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
         }
     }
 }

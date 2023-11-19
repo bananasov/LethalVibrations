@@ -19,7 +19,7 @@ namespace LethalVibrations.Patches
         {
             Logger.LogInfo($"ChargeItem got called");
 
-            if (Plugin.DeviceManager.IsConnected() && Config.VibrateItemChargerCharge.Value)
+            if (Plugin.DeviceManager.IsConnected() && Config.VibrateItemChargerChargeEnabled.Value)
             {
                 // TODO: Fix this.
                 Plugin.DeviceManager.VibrateConnectedDevices(0.7);

@@ -25,7 +25,7 @@ namespace LethalVibrations.Patches
             var damage = (float)damageNumber;
             Logger.LogInfo($"DamagePlayer got called: {damage} ({damage / 100f})");
 
-            if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageRecieved.Value)
+            if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageReceivedEnabled.Value)
             {
                 Plugin.DeviceManager.VibrateConnectedDevices(damage / 100f);
             }
@@ -41,7 +41,7 @@ namespace LethalVibrations.Patches
 
             Logger.LogInfo($"KillPlayer got called");
 
-            if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilled.Value)
+            if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilledEnabled.Value)
             {
                 Plugin.DeviceManager.VibrateConnectedDevices(1.0f);
             }
