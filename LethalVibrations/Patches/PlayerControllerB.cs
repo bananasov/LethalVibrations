@@ -13,20 +13,21 @@ namespace LethalVibrations.Patches
             Logger = logger;
         }
 
-        [HarmonyPatch(typeof(PlayerControllerB), "DamagePlayer")]
+        [HarmonyPatch(typeof(PlayerControllerB), "DamagePlayerClientRpc")]
         [HarmonyPostfix]
         static void DamagePlayerPatch(int damageNumber)
         {
-            Logger.LogInfo($"DamagePlayer got called: {damageNumber} ({damageNumber / 100})");
+            var damage = (float)damageNumber;
+            Logger.LogInfo($"DamagePlayer got called: {damage} ({damage / 100f})");
 
             if (Plugin.DeviceManager.IsConnected())
             {
                 // TODO: Fix this.
-                Plugin.DeviceManager.VibrateConnectedDevices(damageNumber / 100);
+                Plugin.DeviceManager.VibrateConnectedDevices(damage / 100f);
             }
         }
 
-        [HarmonyPatch(typeof(PlayerControllerB), "KillPlayer")]
+        [HarmonyPatch(typeof(PlayerControllerB), "KillPlayerClientRpc")]
         [HarmonyPostfix]
         static void KillPlayerPatch()
         {
