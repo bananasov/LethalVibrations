@@ -1,6 +1,7 @@
 ﻿using BepInEx.Logging;
 using GameNetcodeStuff;
 using HarmonyLib;
+using LethalVibrations.Buttplug;
 
 namespace LethalVibrations.Patches
 {
@@ -20,9 +21,8 @@ namespace LethalVibrations.Patches
             var damage = (float)damageNumber;
             Logger.LogInfo($"DamagePlayer got called: {damage} ({damage / 100f})");
 
-            if (Plugin.DeviceManager.IsConnected())
+            if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageRecieved.Value)
             {
-                // TODO: Fix this.
                 Plugin.DeviceManager.VibrateConnectedDevices(damage / 100f);
             }
         }
@@ -33,7 +33,7 @@ namespace LethalVibrations.Patches
         {
             Logger.LogInfo($"KillPlayer got called");
 
-            if (Plugin.DeviceManager.IsConnected())
+            if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilled.Value)
             {
                 Plugin.DeviceManager.VibrateConnectedDevices(1.0f);
             }

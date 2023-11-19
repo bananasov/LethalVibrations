@@ -1,5 +1,6 @@
 ﻿using BepInEx.Logging;
 using HarmonyLib;
+using LethalVibrations.Buttplug;
 
 namespace LethalVibrations.Patches
 {
@@ -18,7 +19,7 @@ namespace LethalVibrations.Patches
         {
             Logger.LogInfo($"ChargeItem got called");
 
-            if (Plugin.DeviceManager.IsConnected())
+            if (Plugin.DeviceManager.IsConnected() && Config.VibrateItemChargerCharge.Value)
             {
                 // TODO: Fix this.
                 Plugin.DeviceManager.VibrateConnectedDevices(0.7);
