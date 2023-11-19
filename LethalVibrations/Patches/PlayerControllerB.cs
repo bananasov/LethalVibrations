@@ -1,9 +1,10 @@
 ﻿using BepInEx.Logging;
+using GameNetcodeStuff;
 using HarmonyLib;
 
 namespace LethalVibrations.Patches
 {
-    internal class PlayerControllerB
+    internal class PlayerControllerBPatches
     {
         internal static ManualLogSource Logger { get; set; }
 
@@ -12,7 +13,7 @@ namespace LethalVibrations.Patches
             Logger = logger;
         }
 
-        [HarmonyPatch(typeof(GameNetcodeStuff.PlayerControllerB), "DamagePlayer")]
+        [HarmonyPatch(typeof(PlayerControllerB), "DamagePlayer")]
         [HarmonyPostfix]
         static void DamagePlayerPatch(int damageNumber)
         {
@@ -25,7 +26,7 @@ namespace LethalVibrations.Patches
             }
         }
 
-        [HarmonyPatch(typeof(GameNetcodeStuff.PlayerControllerB), "KillPlayer")]
+        [HarmonyPatch(typeof(PlayerControllerB), "KillPlayer")]
         [HarmonyPostfix]
         static void KillPlayerPatch()
         {

@@ -14,10 +14,12 @@ namespace LethalVibrations
             DeviceManager = new DeviceManager(Logger, "LethalVibrations");
             DeviceManager.ConnectDevices();
 
-            Patches.PlayerControllerB.Init(Logger);
+            Patches.PlayerControllerBPatches.Init(Logger);
+            Patches.ItemChargerPatches.Init(Logger);
 
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
-            harmony.PatchAll(typeof(Patches.PlayerControllerB));
+            harmony.PatchAll(typeof(Patches.PlayerControllerBPatches));
+            harmony.PatchAll(typeof(Patches.ItemChargerPatches));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
         }
