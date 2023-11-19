@@ -14,6 +14,7 @@ namespace LethalVibrations.Buttplug
 
         internal static ConfigEntry<bool> VibrateDamageRecieved { get; set; }
         internal static ConfigEntry<bool> VibrateDamageDealt { get; set; }
+        internal static ConfigEntry<bool> VibrateWalkieTalkieRecieved { get; set; }
 
         static Config()
         {
@@ -28,6 +29,7 @@ namespace LethalVibrations.Buttplug
 
             VibrateDamageRecieved = ConfigFile.Bind("Vibrations", "VibrateRecieved", true, "Vibrate when you recieve damage");
             VibrateDamageDealt = ConfigFile.Bind("Vibrations", "VibrateDealt", true, "Vibrate when you deal damage");
+            VibrateWalkieTalkieRecieved = ConfigFile.Bind("Vibrations", "VibrateWalkieTalkieRecieved", true, "Vibrate when you recieve audio from the WalkieTalkie");
         }
     }
 }
