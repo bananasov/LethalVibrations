@@ -78,6 +78,8 @@ namespace LethalVibrations.Buttplug
         {
             State = DeviceState.Active;
 
+            intensity += Config.VibrateAmplifier.Value;
+
             ConnectedDevices.ForEach(async (ButtplugClientDevice device) => {
                 await device.VibrateAsync(intensity);
             });

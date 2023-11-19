@@ -12,9 +12,11 @@ namespace LethalVibrations.Buttplug
 
         internal static ConfigEntry<string> ServerUri { get; set; }
 
+        internal static ConfigEntry<float> VibrateAmplifier { get; set; }
         internal static ConfigEntry<bool> VibrateDamageRecieved { get; set; }
         internal static ConfigEntry<bool> VibrateDamageDealt { get; set; }
         internal static ConfigEntry<bool> VibrateWalkieTalkieRecieved { get; set; }
+        internal static ConfigEntry<bool> VibrateItemChargerCharge { get; set; }
 
         static Config()
         {
@@ -27,8 +29,11 @@ namespace LethalVibrations.Buttplug
                 "URI of the Intiface server."
             );
 
+            VibrateAmplifier =
+                ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
             VibrateDamageRecieved = ConfigFile.Bind("Vibrations", "VibrateRecieved", true, "Vibrate when you recieve damage");
             VibrateDamageDealt = ConfigFile.Bind("Vibrations", "VibrateDealt", true, "Vibrate when you deal damage");
+            VibrateItemChargerCharge = ConfigFile.Bind("Vibrations", "ItemCharge", true, "Vibrate when you charge an item");
             VibrateWalkieTalkieRecieved = ConfigFile.Bind("Vibrations", "VibrateWalkieTalkieRecieved", true, "Vibrate when you recieve audio from the WalkieTalkie");
         }
     }
