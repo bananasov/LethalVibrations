@@ -10,7 +10,7 @@ namespace LethalVibrations.Buttplug
     {
         internal static ConfigFile ConfigFile { get; set; }
 
-        private static ConfigEntry<string> serverUri { get; set; }
+        internal static ConfigEntry<string> serverUri { get; set; }
 
         internal static ConfigEntry<bool> vibrateDamageRecieved { get; set; }
         internal static ConfigEntry<bool> vibrateDamageDealt { get; set; }

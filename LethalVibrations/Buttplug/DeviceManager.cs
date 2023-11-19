@@ -60,8 +60,8 @@ namespace LethalVibrations.Buttplug
 
             try
             {
-                Log.LogInfo($"Attempting to connect to Intiface server at ws://127.0.0.1:12345/");
-                await ButtplugClient.ConnectAsync(new ButtplugWebsocketConnector(new Uri("ws://127.0.0.1:12345/")));
+                Log.LogInfo($"Attempting to connect to Intiface server at {Config.serverUri.Value}");
+                await ButtplugClient.ConnectAsync(new ButtplugWebsocketConnector(new Uri(Config.serverUri.Value)));
                 Log.LogInfo("Connection successful. Beginning scan for devices");
                 await ButtplugClient.StartScanningAsync();
             }
