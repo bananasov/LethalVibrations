@@ -7,7 +7,7 @@ namespace LethalVibrations.Patches
 {
     internal class PlayerControllerBPatches
     {
-        internal static ManualLogSource Logger { get; set; }
+        private static ManualLogSource Logger { get; set; }
 
         public static void Init(ManualLogSource logger)
         {
@@ -29,6 +29,7 @@ namespace LethalVibrations.Patches
 
         [HarmonyPatch(typeof(PlayerControllerB), "KillPlayerClientRpc")]
         [HarmonyPostfix]
+        // ReSharper disable once InconsistentNaming
         static void KillPlayerPatch(PlayerControllerB __instance)
         {
             if (__instance.playerClientId != 0) { return; }
