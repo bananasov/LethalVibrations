@@ -8,9 +8,9 @@ using System.Collections.Generic;
 // Some code was stolen from https://github.com/quasikyo/rumble-rain/blob/main/RumbleRain/DeviceManager.cs
 namespace LethalVibrations.Buttplug
 {
-    internal class DeviceManager
+    public class DeviceManager
     {
-        private enum DeviceState
+        public enum DeviceState
         {
             /// <summary>
             /// Open to input and devices are vibrating.
@@ -27,7 +27,7 @@ namespace LethalVibrations.Buttplug
         }
 
         private DeviceState _state;
-        private DeviceState State
+        public DeviceState State
         {
             get => _state;
             set
@@ -54,6 +54,8 @@ namespace LethalVibrations.Buttplug
             ButtplugClient.DeviceRemoved += HandleDeviceRemoved;
         }
 
+        public bool IsConnected() => ButtplugClient.Connected;
+
         public async void ConnectDevices()
         {
             if (ButtplugClient.Connected) { return; }
@@ -72,7 +74,7 @@ namespace LethalVibrations.Buttplug
             }
         }
 
-        private void VibrateConnectedDevices(double intensity)
+        public void VibrateConnectedDevices(double intensity)
         {
             State = DeviceState.Active;
 
@@ -81,7 +83,7 @@ namespace LethalVibrations.Buttplug
             });
         }
 
-        private void StopConnectedDevices(DeviceState newState = DeviceState.Inactive)
+        public void StopConnectedDevices(DeviceState newState = DeviceState.Inactive)
         {
             if (newState == DeviceState.Active)
             {

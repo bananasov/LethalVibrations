@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using HarmonyLib;
 using LethalVibrations.Buttplug;
 
 namespace LethalVibrations
@@ -12,6 +13,11 @@ namespace LethalVibrations
         {
             DeviceManager = new DeviceManager(Logger, "LethalVibrations");
             DeviceManager.ConnectDevices();
+
+            Patches.PlayerControllerB.Init(Logger);
+
+            var harmony = new Harmony("com.yourname.yourmod");
+            harmony.PatchAll(typeof(Patches.PlayerControllerB));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
         }
