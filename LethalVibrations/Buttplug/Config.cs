@@ -10,7 +10,7 @@ namespace LethalVibrations.Buttplug
     {
         internal static ConfigFile ConfigFile { get; set; }
 
-        internal static ConfigEntry<string> serverUri { get; set; }
+        internal static ConfigEntry<string> ServerUri { get; set; }
 
         internal static ConfigEntry<bool> VibrateDamageRecieved { get; set; }
         internal static ConfigEntry<bool> VibrateDamageDealt { get; set; }
@@ -19,7 +19,7 @@ namespace LethalVibrations.Buttplug
         {
             ConfigFile = new ConfigFile(Paths.ConfigPath + "\\LethalVibrations.cfg", true);
 
-            serverUri = ConfigFile.Bind(
+            ServerUri = ConfigFile.Bind(
                 "Devices",
                 "Server Uri",
                 "ws://localhost:12345",
