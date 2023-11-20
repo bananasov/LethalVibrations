@@ -85,7 +85,7 @@ namespace LethalVibrations.Buttplug
             {
                 await device.VibrateAsync(intensity);
                 await Task.Delay((int)(time * 1000f));
-                await device.VibrateAsync(intensity);
+                await device.VibrateAsync(0.0f);
             }
 
             ConnectedDevices.ForEach(Action);
