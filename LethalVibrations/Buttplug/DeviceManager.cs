@@ -5,38 +5,13 @@ using Buttplug.Core;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine;
 
 // Some code was stolen from https://github.com/quasikyo/rumble-rain/blob/main/RumbleRain/DeviceManager.cs
 namespace LethalVibrations.Buttplug
 {
     public class DeviceManager
     {
-        public enum DeviceState
-        {
-            /// <summary>
-            /// Open to input and devices are vibrating.
-            /// </summary>
-            Active,
-            /// <summary>
-            /// Open to input and devices are not vibrating.
-            /// </summary>
-            Inactive,
-            /// <summary>
-            /// Closed to input and devices are not vibrating.
-            /// </summary>
-            Paused
-        }
-
-        private DeviceState _state;
-        public DeviceState State
-        {
-            get => _state;
-            set
-            {
-                Log.LogDebug($"State updated from {_state} to {value}");
-                _state = value;
-            }
-        }
 
         private static ManualLogSource Log { get; set; }
 
@@ -46,7 +21,6 @@ namespace LethalVibrations.Buttplug
         public DeviceManager(ManualLogSource logger, string clientName)
         {
             Log = logger;
-            State = DeviceState.Inactive;
 
             ConnectedDevices = new List<ButtplugClientDevice>();
             ButtplugClient = new ButtplugClient(clientName);
@@ -77,13 +51,11 @@ namespace LethalVibrations.Buttplug
 
         public void VibrateConnectedDevices(double intensity, float time)
         {
-            State = DeviceState.Active;
-
             intensity += Config.VibrateAmplifier.Value;
 
             async void Action(ButtplugClientDevice device)
             {
-                await device.VibrateAsync(intensity);
+                await device.VibrateAsync(Mathf.Clamp((float)intensity, 0f, 1.0f));
                 await Task.Delay((int)(time * 1000f));
                 await device.VibrateAsync(0.0f);
             }
@@ -91,14 +63,8 @@ namespace LethalVibrations.Buttplug
             ConnectedDevices.ForEach(Action);
         }
 
-        public void StopConnectedDevices(DeviceState newState = DeviceState.Inactive)
+        public void StopConnectedDevices()
         {
-            if (newState == DeviceState.Active)
-            {
-                throw new ArgumentException($"{nameof(newState)}={newState} is invalid. Expecting {DeviceState.Inactive} or {DeviceState.Active}.");
-            }
-
-            State = newState;
             ConnectedDevices.ForEach(async (ButtplugClientDevice device) => await device.Stop());
         }
 
