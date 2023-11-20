@@ -14,12 +14,12 @@ namespace LethalVibrations.Patches
             Logger = logger;
         }
 
-        [HarmonyPatch(typeof(PlayerControllerB), "DamagePlayerClientRpc")]
+        [HarmonyPatch(typeof(PlayerControllerB), "DamagePlayer")]
         [HarmonyPostfix]
         // ReSharper disable once InconsistentNaming
         static void DamagePlayerPatch(PlayerControllerB __instance, int damageNumber)
         {
-            if (__instance.playerClientId != 0)
+            if (__instance.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
                 return;
 
             var damage = (float)damageNumber;
@@ -31,12 +31,12 @@ namespace LethalVibrations.Patches
             }
         }
 
-        [HarmonyPatch(typeof(PlayerControllerB), "KillPlayerClientRpc")]
+        [HarmonyPatch(typeof(PlayerControllerB), "KillPlayer")]
         [HarmonyPostfix]
         // ReSharper disable once InconsistentNaming
         static void KillPlayerPatch(PlayerControllerB __instance)
         {
-            if (__instance.playerClientId != 0)
+            if (__instance.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
                 return;
 
             Logger.LogInfo($"KillPlayer got called");
