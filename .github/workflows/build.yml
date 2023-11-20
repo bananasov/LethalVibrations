@@ -14,13 +14,9 @@ jobs:
     timeout-minutes: 45
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [windows-latest]
         configuration: [Debug, Release]
         include:
-        - os: ubuntu-latest
-          OS_NAME: Linux x64
-          RELEASE_ZIP_OS_NAME: linux_x64
-
         - os: windows-latest
           OS_NAME: Windows x64
           RELEASE_ZIP_OS_NAME: win_x64
