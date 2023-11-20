@@ -4,6 +4,7 @@ using Buttplug.Client.Connectors.WebsocketConnector;
 using Buttplug.Core;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // Some code was stolen from https://github.com/quasikyo/rumble-rain/blob/main/RumbleRain/DeviceManager.cs
 namespace LethalVibrations.Buttplug
@@ -74,15 +75,20 @@ namespace LethalVibrations.Buttplug
             }
         }
 
-        public void VibrateConnectedDevices(double intensity)
+        public void VibrateConnectedDevices(double intensity, float time)
         {
             State = DeviceState.Active;
 
             intensity += Config.VibrateAmplifier.Value;
 
-            ConnectedDevices.ForEach(async (ButtplugClientDevice device) => {
+            async void Action(ButtplugClientDevice device)
+            {
                 await device.VibrateAsync(intensity);
-            });
+                await Task.Delay((int)(time * 1000f));
+                await device.VibrateAsync(intensity);
+            }
+
+            ConnectedDevices.ForEach(Action);
         }
 
         public void StopConnectedDevices(DeviceState newState = DeviceState.Inactive)

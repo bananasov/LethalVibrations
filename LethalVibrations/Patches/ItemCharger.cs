@@ -21,8 +21,8 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateItemChargerChargeEnabled.Value)
             {
-                // TODO: Fix this.
-                Plugin.DeviceManager.VibrateConnectedDevices(0.7);
+                
+                Plugin.DeviceManager.VibrateConnectedDevices(0.7, Config.VibrateItemChargerChargeTime.Value);
             }
         }
     }   
