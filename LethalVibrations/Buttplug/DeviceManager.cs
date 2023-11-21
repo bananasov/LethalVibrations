@@ -12,7 +12,6 @@ namespace LethalVibrations.Buttplug
 {
     public class DeviceManager
     {
-
         private static ManualLogSource Log { get; set; }
 
         private List<ButtplugClientDevice> ConnectedDevices { get; set; }

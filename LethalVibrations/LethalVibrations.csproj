@@ -30,5 +30,11 @@
 	  <Reference Include="Assembly-CSharp">
 	    <HintPath>..\libs\Assembly-CSharp.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Unity.Netcode.Runtime">
+	    <HintPath>..\libs\Unity.Netcode.Runtime.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.CoreModule">
+	    <HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 </Project>
