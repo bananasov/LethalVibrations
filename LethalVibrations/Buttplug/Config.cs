@@ -13,27 +13,37 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<string> ServerUri { get; set; }
 
         internal static ConfigEntry<float> VibrateAmplifier { get; set; }
-        
+        internal static ConfigEntry<bool> GoodboyMode { get; set; }
+
+        #region Damage recieved config entries
         internal static ConfigEntry<bool> VibrateDamageReceivedEnabled { get; set; }
         internal static ConfigEntry<float> VibrateDamageReceivedTime { get; set; }
         internal static ConfigEntry<float> VibrateDamageReceivedAmplifier { get; set; }
-        
+        #endregion
+
+        #region Damage Dealt config entries
         internal static ConfigEntry<bool> VibrateDamageDealtEnabled { get; set; }
         internal static ConfigEntry<float> VibrateDamageDealtTime { get; set; }
         internal static ConfigEntry<float> VibrateDamageDealtAmplifier { get; set; }
-        
+        #endregion
+
+        #region Player death config entries
         internal static ConfigEntry<bool> VibrateKilledEnabled { get; set; }
         internal static ConfigEntry<float> VibrateKilledTime { get; set; }
         internal static ConfigEntry<float> VibrateKilledAmplifier { get; set; }
+        #endregion
 
+        #region Walkie talkie vibration config entries
         internal static ConfigEntry<bool> VibrateWalkieTalkieReceivedEnabled { get; set; }
         internal static ConfigEntry<float> VibrateWalkieTalkieReceivedTime { get; set; }
         internal static ConfigEntry<float> VibrateWalkieTalkieReceivedAmplifier { get; set; }
+        #endregion
 
+        #region Charge item vibration config entries
         internal static ConfigEntry<bool> VibrateItemChargerChargeEnabled { get; set; }
         internal static ConfigEntry<float> VibrateItemChargerChargeTime { get; set; }
         internal static ConfigEntry<float> VibrateItemChargerChargeAmplifier { get; set; }
-
+        #endregion
 
         static Config()
         {
@@ -48,6 +58,7 @@ namespace LethalVibrations.Buttplug
 
             VibrateAmplifier =
                 ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
+            GoodboyMode = ConfigFile.Bind("Vibrations", "GoodBoyMode", false, "Rewards you instead of punishing you");
             
             VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
             VibrateDamageReceivedTime = ConfigFile.Bind("Vibrations.DamageReceived", "Time", 1.0f, "Length of time to vibrate for");
