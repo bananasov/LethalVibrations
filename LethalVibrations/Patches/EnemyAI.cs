@@ -1,4 +1,5 @@
 ﻿using BepInEx.Logging;
+using GameNetcodeStuff;
 using HarmonyLib;
 using LethalVibrations.Buttplug;
 
@@ -13,11 +14,14 @@ namespace LethalVibrations.Patches
             Logger = logger;
         }
 
-        [HarmonyPatch(typeof(EnemyAI), "HitEnemyOnLocalClient")]
+        [HarmonyPatch(typeof(EnemyAI), "HitEnemy")]
         [HarmonyPostfix]
-        static void HitEnemyOnLocalClientPatch()
+        static void HitEnemyPatch(int force, PlayerControllerB playerWhoHit)
         {
-            Logger.LogInfo($"HitEnemyOnLocalClient got called");
+            if (playerWhoHit.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
+                return;
+
+            Logger.LogInfo($"HitEnemy got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageDealtEnabled.Value)
             {
