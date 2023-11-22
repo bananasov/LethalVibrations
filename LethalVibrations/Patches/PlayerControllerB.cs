@@ -27,7 +27,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageReceivedEnabled.Value && !Config.GoodboyMode.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(damage / 100f, Config.VibrateDamageReceivedTime.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices((damage / 100f) + Config.VibrateDamageReceivedAmplifier.Value, Config.VibrateDamageReceivedTime.Value);
             }
         }
 
@@ -43,7 +43,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilledEnabled.Value && !Config.GoodboyMode.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(1.0f, Config.VibrateKilledTime.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(0.9f + Config.VibrateKilledAmplifier.Value, Config.VibrateKilledTime.Value);
             }
         }
 
