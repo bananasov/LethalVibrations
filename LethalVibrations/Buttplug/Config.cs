@@ -78,15 +78,15 @@ namespace LethalVibrations.Buttplug
             VibrateKilledTime = ConfigFile.Bind("Vibrations.PlayerKilled", "Time", 1.0f, "Length of time to vibrate for");
             VibrateKilledAmplifier = ConfigFile.Bind("Vibrations.PlayerKilled", "Amplifier", 0.0f, "Change the amplification of vibration");
             
-            VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
+            VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", false, "Vibrate when you charge an item");
             VibrateItemChargerChargeTime = ConfigFile.Bind("Vibrations.ItemCharge", "Time", 1.0f, "Length of time to vibrate for");
             VibrateItemChargerChargeAmplifier = ConfigFile.Bind("Vibrations.ItemCharge", "Amplifier", 0.0f, "Change the amplification of vibration");
             
-            VibrateWalkieTalkieReceivedEnabled = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Enabled", true, "Vibrate when you receive audio from the WalkieTalkie");
+            VibrateWalkieTalkieReceivedEnabled = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Enabled", false, "Vibrate when you receive audio from the WalkieTalkie");
             VibrateWalkieTalkieReceivedTime = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Time", 1.0f, "Length of time to vibrate for");
             VibrateWalkieTalkieReceivedAmplifier = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
 
-            VibrateShakeScreenEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
+            VibrateShakeScreenEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", false, "Vibrate when your screen shakes");
             VibrateShakeScreenTime = ConfigFile.Bind("Vibrations.ShakeScreen", "Time", 1.0f, "Length of time to vibrate for");
             VibrateShakeScreenAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
         }
