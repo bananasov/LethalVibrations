@@ -17,15 +17,15 @@ namespace LethalVibrations
             Patches.PlayerControllerBPatches.Init(Logger);
             Patches.ItemChargerPatches.Init(Logger);
             Patches.WalkieTalkiePatches.Init(Logger);
-            Patches.EnemyAI.Init(Logger);
-            Patches.HUDManager.Init(Logger);
+            Patches.EnemyAIPatches.Init(Logger);
+            Patches.HUDManagerPatches.Init(Logger);
 
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(Patches.PlayerControllerBPatches));
             harmony.PatchAll(typeof(Patches.ItemChargerPatches));
             harmony.PatchAll(typeof(Patches.WalkieTalkiePatches));
-            harmony.PatchAll(typeof(Patches.EnemyAI));
-            harmony.PatchAll(typeof(Patches.HUDManager));
+            harmony.PatchAll(typeof(Patches.EnemyAIPatches));
+            harmony.PatchAll(typeof(Patches.HUDManagerPatches));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
         }

@@ -4,7 +4,7 @@ using LethalVibrations.Buttplug;
 
 namespace LethalVibrations.Patches
 {
-    internal class HUDManager
+    internal class HUDManagerPatches
     {
         private static ManualLogSource Logger { get; set; }
 

@@ -5,7 +5,7 @@ using LethalVibrations.Buttplug;
 
 namespace LethalVibrations.Patches
 {
-    internal class EnemyAI
+    internal class EnemyAIPatches
     {
         private static ManualLogSource Logger { get; set; }
 
@@ -28,5 +28,6 @@ namespace LethalVibrations.Patches
                 Plugin.DeviceManager.VibrateConnectedDevices(0.5f + Config.VibrateDamageDealtAmplifier.Value, Config.VibrateDamageDealtTime.Value);
             }
         }
+
     }
 }
