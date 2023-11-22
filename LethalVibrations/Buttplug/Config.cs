@@ -45,6 +45,12 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> VibrateItemChargerChargeAmplifier { get; set; }
         #endregion
 
+        #region Shake screen vibration config entries
+        internal static ConfigEntry<bool> VibrateShakeScreenEnabled { get; set; }
+        internal static ConfigEntry<float> VibrateShakeScreenTime { get; set; }
+        internal static ConfigEntry<float> VibrateShakeScreenAmplifier { get; set; }
+        #endregion
+
         static Config()
         {
             ConfigFile = new ConfigFile(Paths.ConfigPath + "\\LethalVibrations.cfg", true);
@@ -79,6 +85,10 @@ namespace LethalVibrations.Buttplug
             VibrateWalkieTalkieReceivedEnabled = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Enabled", true, "Vibrate when you receive audio from the WalkieTalkie");
             VibrateWalkieTalkieReceivedTime = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Time", 1.0f, "Length of time to vibrate for");
             VibrateWalkieTalkieReceivedAmplifier = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
+
+            VibrateShakeScreenEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
+            VibrateShakeScreenTime = ConfigFile.Bind("Vibrations.ShakeScreen", "Time", 1.0f, "Length of time to vibrate for");
+            VibrateShakeScreenAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
         }
     }
 }
