@@ -22,9 +22,9 @@ internal class WalkieTalkiePatches
 
         Logger.LogInfo($"SendWalkieTalkieStartTransmissionSFX got called");
 
-        if (Plugin.DeviceManager.IsConnected() && Config.VibrateItemChargerChargeEnabled.Value)
+        if (Plugin.DeviceManager.IsConnected() && Config.VibrateWalkieTalkieReceivedEnabled.Value)
         {
-            Plugin.DeviceManager.VibrateConnectedDevices(0.6f + Config.VibrateItemChargerChargeAmplifier.Value, Config.VibrateItemChargerChargeTime.Value);
+            Plugin.DeviceManager.VibrateConnectedDevices(0.6f + Config.VibrateWalkieTalkieReceivedAmplifier.Value, Config.VibrateWalkieTalkieReceivedTime.Value);
         }
     }
 }
