@@ -46,7 +46,5 @@ namespace LethalVibrations.Patches
                 Plugin.DeviceManager.VibrateConnectedDevices(0.9f + Config.VibrateKilledAmplifier.Value, Config.VibrateKilledTime.Value);
             }
         }
-
-        // TODO: Implement vibrate when you grab something of value
     }
 }

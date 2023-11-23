@@ -19,6 +19,7 @@ namespace LethalVibrations
             Patches.WalkieTalkiePatches.Init(Logger);
             Patches.EnemyAIPatches.Init(Logger);
             Patches.HUDManagerPatches.Init(Logger);
+            Patches.GrabbableObjectPatches.Init(Logger);
 
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(Patches.PlayerControllerBPatches));
@@ -26,6 +27,7 @@ namespace LethalVibrations
             harmony.PatchAll(typeof(Patches.WalkieTalkiePatches));
             harmony.PatchAll(typeof(Patches.EnemyAIPatches));
             harmony.PatchAll(typeof(Patches.HUDManagerPatches));
+            harmony.PatchAll(typeof(Patches.GrabbableObjectPatches));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
         }
