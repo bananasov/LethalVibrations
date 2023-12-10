@@ -17,10 +17,16 @@ pdb_file := PROJECT_NAME +".pdb"
 
 bepinex_plugin_directory := COMPANY_DIRECTORY / "BepInEx" / "plugins"
 
+# Build the project
 build:
     dotnet build -c {{RELEASE_TARGET}}
 
+# Copies over the built DLLs over to the BepInEx install
 copy:
     cp "{{binary_directory / dll_file}}" "{{bepinex_plugin_directory / dll_file}}"
     cp "{{binary_directory / pdb_file}}" "{{bepinex_plugin_directory / pdb_file}}"
-    
+
+# Removes the DLL files from the BepInEx install
+clean:
+    rm "{{bepinex_plugin_directory / dll_file}}"
+    rm "{{bepinex_plugin_directory / pdb_file}}"
