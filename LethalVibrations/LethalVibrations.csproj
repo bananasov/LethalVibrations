@@ -8,14 +8,13 @@
 		<LangVersion>latest</LangVersion>
 		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
 		<PackageReference Include="BepInEx.Core" Version="5.*" />
 		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
 		<PackageReference Include="Buttplug" Version="3.0.1" />
 		<PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1" />
-		<PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
 		<PackageReference Include="Costura.Fody" Version="5.7.0">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
@@ -25,7 +24,7 @@
 		</PackageReference>
 		<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
 	  <Reference Include="Assembly-CSharp">
 	    <HintPath>..\libs\Assembly-CSharp.dll</HintPath>
