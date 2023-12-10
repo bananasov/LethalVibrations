@@ -16,9 +16,9 @@ namespace LethalVibrations.Patches
 
         [HarmonyPatch(typeof(HUDManager), "ShakeCamera")]
         [HarmonyPostfix]
-        static void ShakeCameraPatch(ScreenShakeType shakeType)
+        private static void ShakeCameraPatch(ScreenShakeType shakeType)
         {
-            Logger.LogInfo($"ShakeCamera {shakeType} got called");
+            Logger.LogDebug($"ShakeCamera {shakeType} got called");
 
             if (!Plugin.DeviceManager.IsConnected() || !Config.VibrateShakeScreenEnabled.Value) return;
             
@@ -43,9 +43,9 @@ namespace LethalVibrations.Patches
 
         [HarmonyPatch(typeof(HUDManager), "PingScan_performed")]
         [HarmonyPostfix]
-        static void PingScan_performedPatch()
+        private static void PingScan_performedPatch()
         {
-            Logger.LogInfo($"PingScan_performed got called");
+            Logger.LogDebug($"PingScan_performed got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.PingScanEnabled.Value)
             {

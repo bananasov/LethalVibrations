@@ -6,7 +6,7 @@ namespace LethalVibrations.Patches;
 
 internal class WalkieTalkiePatches
 {
-    internal static ManualLogSource Logger { get; set; }
+    private static ManualLogSource Logger { get; set; }
 
     public static void Init(ManualLogSource logger)
     {
@@ -15,12 +15,12 @@ internal class WalkieTalkiePatches
 
     [HarmonyPatch(typeof(WalkieTalkie), "SendWalkieTalkieStartTransmissionSFX")]
     [HarmonyPostfix]
-    static void SendWalkieTalkieStartTransmissionSFXPatch(int playerId)
+    private static void SendWalkieTalkieStartTransmissionSfxPatch(int playerId)
     {
         if (playerId == (int)GameNetworkManager.Instance.localPlayerController.playerClientId)
             return;
 
-        Logger.LogInfo($"SendWalkieTalkieStartTransmissionSFX got called");
+        Logger.LogDebug($"SendWalkieTalkieStartTransmissionSFX got called");
 
         if (Plugin.DeviceManager.IsConnected() && Config.VibrateWalkieTalkieReceivedEnabled.Value)
         {

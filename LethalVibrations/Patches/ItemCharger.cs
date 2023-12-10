@@ -6,7 +6,7 @@ namespace LethalVibrations.Patches
 {
     internal class ItemChargerPatches
     {
-        internal static ManualLogSource Logger { get; set; }
+        private static ManualLogSource Logger { get; set; }
         
         public static void Init(ManualLogSource logger)
         {
@@ -15,13 +15,13 @@ namespace LethalVibrations.Patches
         
         [HarmonyPatch(typeof(ItemCharger), "ChargeItem")]
         [HarmonyPostfix]
-        static void ChargeItemPatch()
+        private static void ChargeItemPatch()
         {
-            Logger.LogInfo($"ChargeItem got called");
+            Logger.LogDebug($"ChargeItem got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateItemChargerChargeEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(0.8f + Config.VibrateItemChargerChargeAmplifier.Value, Config.VibrateItemChargerChargeDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(0.4f + Config.VibrateItemChargerChargeAmplifier.Value, Config.VibrateItemChargerChargeDuration.Value);
             }
         }
     }   

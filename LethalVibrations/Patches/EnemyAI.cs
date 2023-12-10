@@ -16,18 +16,17 @@ namespace LethalVibrations.Patches
 
         [HarmonyPatch(typeof(EnemyAI), "HitEnemy")]
         [HarmonyPostfix]
-        static void HitEnemyPatch(int force, PlayerControllerB playerWhoHit)
+        private static void HitEnemyPatch(int force, PlayerControllerB playerWhoHit)
         {
             if (playerWhoHit.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
                 return;
 
-            Logger.LogInfo($"HitEnemy got called");
+            Logger.LogDebug($"HitEnemy got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageDealtEnabled.Value)
             {
                 Plugin.DeviceManager.VibrateConnectedDevices(0.5f + Config.VibrateDamageDealtAmplifier.Value, Config.VibrateDamageDealtDuration.Value);
             }
         }
-
     }
 }
