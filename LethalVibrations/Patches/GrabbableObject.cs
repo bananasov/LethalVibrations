@@ -23,7 +23,7 @@ namespace LethalVibrations.Patches
             Logger.LogInfo("GrabItemOnClient called");
             if (Plugin.DeviceManager.IsConnected() && Config.GoodboyMode.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(0.2f + Config.VibrateKilledAmplifier.Value, Config.VibrateKilledTime.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(0.2f + Config.VibrateKilledAmplifier.Value, Config.VibrateKilledDuration.Value);
             }
         }
     }

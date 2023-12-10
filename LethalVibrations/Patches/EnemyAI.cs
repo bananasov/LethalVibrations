@@ -25,7 +25,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageDealtEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(0.5f + Config.VibrateDamageDealtAmplifier.Value, Config.VibrateDamageDealtTime.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(0.5f + Config.VibrateDamageDealtAmplifier.Value, Config.VibrateDamageDealtDuration.Value);
             }
         }
 
