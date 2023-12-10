@@ -15,6 +15,7 @@ namespace LethalVibrations.Patches
 
         [HarmonyPatch(typeof(GrabbableObject), "GrabItemOnClient")]
         [HarmonyPostfix]
+        // ReSharper disable once InconsistentNaming
         static void GrabItemOnClientPatch(GrabbableObject __instance)
         {
             if (!__instance.itemProperties.isScrap)
