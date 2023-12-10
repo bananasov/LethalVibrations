@@ -10,7 +10,7 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<string> ServerUri { get; set; }
 
         internal static ConfigEntry<float> VibrateAmplifier { get; set; }
-        internal static ConfigEntry<bool> GoodboyMode { get; set; }
+        internal static ConfigEntry<bool> Rewarding { get; set; }
 
         #region Damage recieved config entries
         internal static ConfigEntry<bool> VibrateDamageReceivedEnabled { get; set; }
@@ -68,7 +68,7 @@ namespace LethalVibrations.Buttplug
 
             VibrateAmplifier =
                 ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
-            GoodboyMode = ConfigFile.Bind("Vibrations", "GoodBoyMode", false, "Enabled rewarding");
+            Rewarding = ConfigFile.Bind("Vibrations", "GoodBoyMode", false, "Enable rewarding");
             
             VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
             VibrateDamageReceivedDuration = ConfigFile.Bind("Vibrations.DamageReceived", "Duration", 1.0f, "Length of time to vibrate for");
