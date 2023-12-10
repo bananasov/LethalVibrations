@@ -15,6 +15,7 @@
 		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
 		<PackageReference Include="Buttplug" Version="3.0.1" />
 		<PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1" />
+		<PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
 		<PackageReference Include="Costura.Fody" Version="5.7.0">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
@@ -31,9 +32,6 @@
 	  </Reference>
 	  <Reference Include="Unity.Netcode.Runtime">
 	    <HintPath>..\libs\Unity.Netcode.Runtime.dll</HintPath>
-	  </Reference>
-	  <Reference Include="UnityEngine.CoreModule">
-	    <HintPath>..\libs\UnityEngine.CoreModule.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 </Project>
