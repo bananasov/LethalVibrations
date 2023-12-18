@@ -43,7 +43,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilledEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(0.9f + Config.VibrateKilledAmplifier.Value, Config.VibrateKilledDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(Config.VibrateKilledStrength.Value, Config.VibrateKilledDuration.Value);
             }
         }
     }

@@ -49,7 +49,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.PingScanEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(0.3f + Config.PingScanAmplifier.Value, Config.PingScanDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(Config.PingScanStrength.Value, Config.PingScanDuration.Value);
             }
         }
     }

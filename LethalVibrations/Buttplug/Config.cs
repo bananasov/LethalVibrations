@@ -21,25 +21,25 @@ namespace LethalVibrations.Buttplug
         #region Damage Dealt config entries
         internal static ConfigEntry<bool> VibrateDamageDealtEnabled { get; set; }
         internal static ConfigEntry<float> VibrateDamageDealtDuration { get; set; }
-        internal static ConfigEntry<float> VibrateDamageDealtAmplifier { get; set; }
+        internal static ConfigEntry<float> VibrateDamageDealtStrength { get; set; }
         #endregion
 
         #region Player death config entries
         internal static ConfigEntry<bool> VibrateKilledEnabled { get; set; }
         internal static ConfigEntry<float> VibrateKilledDuration { get; set; }
-        internal static ConfigEntry<float> VibrateKilledAmplifier { get; set; }
+        internal static ConfigEntry<float> VibrateKilledStrength { get; set; }
         #endregion
 
         #region Charge item vibration config entries
         internal static ConfigEntry<bool> VibrateItemChargerChargeEnabled { get; set; }
         internal static ConfigEntry<float> VibrateItemChargerChargeDuration { get; set; }
-        internal static ConfigEntry<float> VibrateItemChargerChargeAmplifier { get; set; }
+        internal static ConfigEntry<float> VibrateItemChargerChargeStrength { get; set; }
         #endregion
         
         #region Walkie talkie vibration config entries
         internal static ConfigEntry<bool> VibrateWalkieTalkieReceivedEnabled { get; set; }
         internal static ConfigEntry<float> VibrateWalkieTalkieReceivedDuration { get; set; }
-        internal static ConfigEntry<float> VibrateWalkieTalkieReceivedAmplifier { get; set; }
+        internal static ConfigEntry<float> VibrateWalkieTalkieReceivedStrength { get; set; }
         #endregion
 
         #region Shake screen vibration config entries
@@ -51,7 +51,7 @@ namespace LethalVibrations.Buttplug
         #region Scan ping vibration config entries
         internal static ConfigEntry<bool> PingScanEnabled { get; set; }
         internal static ConfigEntry<float> PingScanDuration { get; set; }
-        internal static ConfigEntry<float> PingScanAmplifier { get; set; }
+        internal static ConfigEntry<float> PingScanStrength { get; set; }
 
         #endregion
 
@@ -76,19 +76,19 @@ namespace LethalVibrations.Buttplug
             
             VibrateDamageDealtEnabled = ConfigFile.Bind("Vibrations.DamageDealt", "Enabled", true, "Vibrate when you deal damage");
             VibrateDamageDealtDuration = ConfigFile.Bind("Vibrations.DamageDealt", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateDamageDealtAmplifier = ConfigFile.Bind("Vibrations.DamageDealt", "Amplifier", 0.0f, "Change the amplification of vibration");
+            VibrateDamageDealtStrength = ConfigFile.Bind("Vibrations.DamageDealt", "Strength", 0.5f, "Change the strength of vibration");
             
             VibrateKilledEnabled = ConfigFile.Bind("Vibrations.PlayerKilled", "Enabled", true, "Vibrate when you die");
             VibrateKilledDuration = ConfigFile.Bind("Vibrations.PlayerKilled", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateKilledAmplifier = ConfigFile.Bind("Vibrations.PlayerKilled", "Amplifier", 0.0f, "Change the amplification of vibration");
+            VibrateKilledStrength = ConfigFile.Bind("Vibrations.PlayerKilled", "Strength", 1.0f, "Change the strength of vibration");
             
             VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
             VibrateItemChargerChargeDuration = ConfigFile.Bind("Vibrations.ItemCharge", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateItemChargerChargeAmplifier = ConfigFile.Bind("Vibrations.ItemCharge", "Amplifier", 0.0f, "Change the amplification of vibration");
+            VibrateItemChargerChargeStrength = ConfigFile.Bind("Vibrations.ItemCharge", "Strength", 0.4f, "Change the strength of vibration");
             
             VibrateWalkieTalkieReceivedEnabled = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Enabled", false, "Vibrate when you receive audio from the WalkieTalkie");
             VibrateWalkieTalkieReceivedDuration = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateWalkieTalkieReceivedAmplifier = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
+            VibrateWalkieTalkieReceivedStrength = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Strength", 0.6f, "Change the strength of vibration");
 
             VibrateShakeScreenEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
             VibrateShakeScreenDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
@@ -96,7 +96,7 @@ namespace LethalVibrations.Buttplug
 
             PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", true, "Vibrate when you press right click");
             PingScanDuration = ConfigFile.Bind("Vibrations.PingScan", "Duration", 0.3f, "Length of time to vibrate for");
-            PingScanAmplifier = ConfigFile.Bind("Vibrations.PingScan", "Amplifier", 0.0f, "Change the amplification of vibration");
+            PingScanStrength = ConfigFile.Bind("Vibrations.PingScan", "Strength", 0.3f, "Change the strength of vibration");
         }
     }
 }

@@ -24,7 +24,7 @@ namespace LethalVibrations.Patches
             Logger.LogDebug("GrabItemOnClient called");
             if (Plugin.DeviceManager.IsConnected() && Config.Rewarding.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(0.2f + Config.VibrateKilledAmplifier.Value, Config.VibrateKilledDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevices(Config.VibrateKilledStrength.Value, Config.VibrateKilledDuration.Value);
             }
         }
     }

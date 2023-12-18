@@ -24,7 +24,7 @@ internal class WalkieTalkiePatches
 
         if (Plugin.DeviceManager.IsConnected() && Config.VibrateWalkieTalkieReceivedEnabled.Value)
         {
-            Plugin.DeviceManager.VibrateConnectedDevices(0.6f + Config.VibrateWalkieTalkieReceivedAmplifier.Value, Config.VibrateWalkieTalkieReceivedDuration.Value);
+            Plugin.DeviceManager.VibrateConnectedDevices(Config.VibrateWalkieTalkieReceivedStrength.Value, Config.VibrateWalkieTalkieReceivedDuration.Value);
         }
     }
 }
