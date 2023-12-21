@@ -19,7 +19,7 @@ namespace LethalVibrations.Patches
         // ReSharper disable once InconsistentNaming
         private static void DamagePlayerPatch(PlayerControllerB __instance, int damageNumber)
         {
-            if (__instance.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
+            if (!__instance.IsOwner)
                 return;
 
             var damage = (float)damageNumber;
@@ -36,7 +36,7 @@ namespace LethalVibrations.Patches
         // ReSharper disable once InconsistentNaming
         private static void KillPlayerPatch(PlayerControllerB __instance)
         {
-            if (__instance.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
+            if (!__instance.IsOwner)
                 return;
 
             Logger.LogDebug($"KillPlayer got called");
