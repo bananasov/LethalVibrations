@@ -21,7 +21,6 @@ namespace LethalVibrations
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(Patches.PlayerControllerBPatches));
             harmony.PatchAll(typeof(Patches.ItemChargerPatches));
-            harmony.PatchAll(typeof(Patches.WalkieTalkiePatches));
             harmony.PatchAll(typeof(Patches.EnemyAIPatches));
             harmony.PatchAll(typeof(Patches.HUDManagerPatches));
             harmony.PatchAll(typeof(Patches.GrabbableObjectPatches));
