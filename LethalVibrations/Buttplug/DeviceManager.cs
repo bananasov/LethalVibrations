@@ -12,18 +12,14 @@ namespace LethalVibrations.Buttplug
 {
     public class DeviceManager
     {
-        private static ManualLogSource Log { get; set; }
-
         private List<ButtplugClientDevice> ConnectedDevices { get; set; }
         private ButtplugClient ButtplugClient { get; set; }
 
-        public DeviceManager(ManualLogSource logger, string clientName)
+        public DeviceManager(string clientName)
         {
-            Log = logger;
-
             ConnectedDevices = new List<ButtplugClientDevice>();
             ButtplugClient = new ButtplugClient(clientName);
-            Log.LogInfo("BP client created for " + clientName);
+            Plugin.Mls.LogInfo("BP client created for " + clientName);
             ButtplugClient.DeviceAdded += HandleDeviceAdded;
             ButtplugClient.DeviceRemoved += HandleDeviceRemoved;
         }
@@ -36,15 +32,15 @@ namespace LethalVibrations.Buttplug
 
             try
             {
-                Log.LogInfo($"Attempting to connect to Intiface server at {Config.ServerUri.Value}");
+                Plugin.Mls.LogInfo($"Attempting to connect to Intiface server at {Config.ServerUri.Value}");
                 await ButtplugClient.ConnectAsync(new ButtplugWebsocketConnector(new Uri(Config.ServerUri.Value)));
-                Log.LogInfo("Connection successful. Beginning scan for devices");
+                Plugin.Mls.LogInfo("Connection successful. Beginning scan for devices");
                 await ButtplugClient.StartScanningAsync();
             }
             catch (ButtplugException exception)
             {
-                Log.LogError($"Attempt to connect to devices failed. Ensure Intiface is running and attempt to reconnect from the 'Devices' section in the mod's in-game settings.");
-                Log.LogDebug($"ButtplugIO error occured while connecting devices: {exception}");
+                Plugin.Mls.LogError($"Attempt to connect to devices failed. Ensure Intiface is running and attempt to reconnect from the 'Devices' section in the mod's in-game settings.");
+                Plugin.Mls.LogDebug($"ButtplugIO error occured while connecting devices: {exception}");
             }
         }
 
@@ -77,11 +73,11 @@ namespace LethalVibrations.Buttplug
         {
             if (!IsVibratableDevice(args.Device))
             {
-                Log.LogInfo($"{args.Device.Name} was detected but ignored due to it not being vibratable.");
+                Plugin.Mls.LogInfo($"{args.Device.Name} was detected but ignored due to it not being vibratable.");
                 return;
             }
 
-            Log.LogInfo($"{args.Device.Name} connected to client {ButtplugClient.Name}");
+            Plugin.Mls.LogInfo($"{args.Device.Name} connected to client {ButtplugClient.Name}");
             ConnectedDevices.Add(args.Device);
         }
 
@@ -89,7 +85,7 @@ namespace LethalVibrations.Buttplug
         {
             if (!IsVibratableDevice(args.Device)) { return; }
 
-            Log.LogInfo($"{args.Device.Name} disconnected from client {ButtplugClient.Name}");
+            Plugin.Mls.LogInfo($"{args.Device.Name} disconnected from client {ButtplugClient.Name}");
             ConnectedDevices.Remove(args.Device);
         }
 

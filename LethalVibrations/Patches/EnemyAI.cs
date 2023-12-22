@@ -7,13 +7,6 @@ namespace LethalVibrations.Patches
 {
     internal class EnemyAIPatches
     {
-        private static ManualLogSource Logger { get; set; }
-
-        public static void Init(ManualLogSource logger)
-        {
-            Logger = logger;
-        }
-
         [HarmonyPatch(typeof(EnemyAI), "HitEnemy")]
         [HarmonyPostfix]
         private static void HitEnemyPatch(int force, PlayerControllerB playerWhoHit)
@@ -21,7 +14,7 @@ namespace LethalVibrations.Patches
             if (playerWhoHit.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId)
                 return;
 
-            Logger.LogDebug($"HitEnemy got called");
+            Plugin.Mls.LogDebug($"HitEnemy got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageDealtEnabled.Value)
             {

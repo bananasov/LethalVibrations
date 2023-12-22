@@ -7,13 +7,7 @@ namespace LethalVibrations.Patches
 {
     internal class PlayerControllerBPatches
     {
-        private static ManualLogSource Logger { get; set; }
-
-        public static void Init(ManualLogSource logger)
-        {
-            Logger = logger;
-        }
-
+        
         [HarmonyPatch(typeof(PlayerControllerB), "DamagePlayer")]
         [HarmonyPostfix]
         // ReSharper disable once InconsistentNaming
@@ -23,7 +17,7 @@ namespace LethalVibrations.Patches
                 return;
 
             var damage = (float)damageNumber;
-            Logger.LogDebug($"DamagePlayer got called: {damage} ({damage / 100f})");
+            Plugin.Mls.LogDebug($"DamagePlayer got called: {damage} ({damage / 100f})");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateDamageReceivedEnabled.Value)
             {
@@ -39,7 +33,7 @@ namespace LethalVibrations.Patches
             if (!__instance.IsOwner)
                 return;
 
-            Logger.LogDebug($"KillPlayer got called");
+            Plugin.Mls.LogDebug($"KillPlayer got called");
 
             if (Plugin.DeviceManager.IsConnected() && Config.VibrateKilledEnabled.Value)
             {

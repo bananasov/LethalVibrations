@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 using LethalVibrations.Buttplug;
 
@@ -8,18 +9,14 @@ namespace LethalVibrations
     public class Plugin : BaseUnityPlugin
     {
         internal static DeviceManager DeviceManager { get; private set; }
-
+        internal static ManualLogSource Mls { get; private set; }
+        
         private void Awake()
         {
-            DeviceManager = new DeviceManager(Logger, "LethalVibrations");
+            Mls = Logger;
+            
+            DeviceManager = new DeviceManager("LethalVibrations");
             DeviceManager.ConnectDevices();
-
-            Patches.PlayerControllerBPatches.Init(Logger);
-            Patches.ItemChargerPatches.Init(Logger);
-            Patches.WalkieTalkiePatches.Init(Logger);
-            Patches.EnemyAIPatches.Init(Logger);
-            Patches.HUDManagerPatches.Init(Logger);
-            Patches.GrabbableObjectPatches.Init(Logger);
 
             var harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll(typeof(Patches.PlayerControllerBPatches));
