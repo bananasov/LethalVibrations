@@ -12,6 +12,9 @@ All notable changes to this project will be documented in this file. See [conven
 - Make patch methods private and replace info logs to debug ones - ([afa74f3](https://github.com/bananasov/LethalVibrations/commit/afa74f340a3c1c40fe529964fb4159934ccc20b9)) - sovnya
 - Remove really stupid walkie talkie vibrate - ([cf3a1d4](https://github.com/bananasov/LethalVibrations/commit/cf3a1d4ca2450b05170305b98211579326c341b4)) - sovnya
 - Remove reference to Walkie Talkie patches - ([ce4b6d4](https://github.com/bananasov/LethalVibrations/commit/ce4b6d44deaf4edfe6ce4f92bf901bf57ce87aba)) - sovnya
+- Fix justfile `package` command removing manifest before its read - ([aab2425](https://github.com/bananasov/LethalVibrations/commit/aab242521ed2f2f2a143d31769b686623c0c76e4)) - sovnya
+- Exclude Thunderstore path for git-cliff - ([cc99e16](https://github.com/bananasov/LethalVibrations/commit/cc99e1641b22dba4bd1c8dee2390e544d33310d0)) - sovnya
+- Fix package command adding the `Thunderstore` folder as the root in the zip - ([44b9611](https://github.com/bananasov/LethalVibrations/commit/44b9611b7ea6e1ce2b358615e688d104b57cdcea)) - sovnya
 
 ### Features
 
@@ -20,6 +23,8 @@ All notable changes to this project will be documented in this file. See [conven
 - More configuration for the Justfile - ([ff6c232](https://github.com/bananasov/LethalVibrations/commit/ff6c232966a618434249d9a5c23b9f28db45576d)) - sovnya
 - Clean command for Justfile - ([17da920](https://github.com/bananasov/LethalVibrations/commit/17da92071ebd6e9f3a65cc0ce7f7e588edfe6bbe)) - sovnya
 - Create FUNDING.yml - ([0e449a5](https://github.com/bananasov/LethalVibrations/commit/0e449a534f108a6463b2e772efd5299397838b69)) - bananasov
+- Add `package` command to justfile - ([8f95785](https://github.com/bananasov/LethalVibrations/commit/8f957852c030e99cd1b8eac74b7a0fd45e7587a8)) - sovnya
+- Add Thunderstore packaging files - ([c7629b7](https://github.com/bananasov/LethalVibrations/commit/c7629b7e8a37fa1d7e49973790f741561d2150db)) - sovnya
 
 ### Miscellaneous Chores
 
