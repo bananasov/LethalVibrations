@@ -10,16 +10,33 @@ export RELEASE_TARGET := "Debug"
 export PROJECT_NAME := "LethalVibrations"
 
 current_directory := invocation_directory()
-binary_directory := current_directory / "LethalVibrations" / "bin" / RELEASE_TARGET / FRAMEWORK
+binary_directory := current_directory / PROJECT_NAME / "bin"
+built_files_directory := binary_directory / RELEASE_TARGET / FRAMEWORK
+release_directory := binary_directory / "Release" / FRAMEWORK
 
 dll_file := PROJECT_NAME + ".dll"
 pdb_file := PROJECT_NAME + ".pdb"
 
 bepinex_plugin_directory := COMPANY_DIRECTORY / "BepInEx" / "plugins"
 
+version := `git cliff --unreleased --bump --context | jq -r .[0].version`
+
 # Build the project
-build:
-    dotnet build -c {{RELEASE_TARGET}}
+build *FLAGS:
+    dotnet build {{FLAGS}}
+
+# Packages the files for Thunderstore
+package: (build "-c Release")
+    git cliff --bump -o "Thunderstore/CHANGELOG.md"
+
+    mkdir "Thunderstore/BepInEx/plugins"
+    cp "{{release_directory / dll_file}}" "Thunderstore/BepInEx/plugins/"
+    cp "{{release_directory / pdb_file}}" "Thunderstore/BepInEx/plugins/"
+    rm "Thunderstore/manifest.json"
+    jq --raw-output '.version_number = "{{trim_end(version)}}"' "Thunderstore/manifest.json" > "Thunderstore/manifest.json.tmp"
+    mv "Thunderstore/manifest.json.tmp" "Thunderstore/manifest.json"
+    7z a LethalVibrations.zip "Thunderstore/*"
+    rm "Thunderstore/BepInEx"
 
 # Copies over the built DLLs over to the BepInEx install
 copy:
