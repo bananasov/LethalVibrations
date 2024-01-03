@@ -40,8 +40,8 @@ package: (build "-c Release")
 
 # Copies over the built DLLs over to the BepInEx install
 copy:
-    cp "{{binary_directory / dll_file}}" "{{bepinex_plugin_directory / dll_file}}"
-    cp "{{binary_directory / pdb_file}}" "{{bepinex_plugin_directory / pdb_file}}"
+    cp "{{built_files_directory / dll_file}}" "{{bepinex_plugin_directory / dll_file}}"
+    cp "{{built_files_directory / pdb_file}}" "{{bepinex_plugin_directory / pdb_file}}"
 
 # Removes the DLL files from the BepInEx install
 clean:
