@@ -35,7 +35,7 @@ package: (build "-c Release")
     jq --raw-output '.version_number = "{{trim_end(version)}}"' "Thunderstore/manifest.json" > "Thunderstore/manifest.json.tmp"
     rm "Thunderstore/manifest.json"
     mv "Thunderstore/manifest.json.tmp" "Thunderstore/manifest.json"
-    7z a LethalVibrations.zip "Thunderstore/*"
+    7z a LethalVibrations.zip "./Thunderstore/*"
     rm "Thunderstore/BepInEx"
 
 # Copies over the built DLLs over to the BepInEx install
