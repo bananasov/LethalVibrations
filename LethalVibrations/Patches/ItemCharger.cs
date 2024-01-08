@@ -1,5 +1,4 @@
-﻿using BepInEx.Logging;
-using HarmonyLib;
+﻿using HarmonyLib;
 using LethalVibrations.Buttplug;
 
 namespace LethalVibrations.Patches

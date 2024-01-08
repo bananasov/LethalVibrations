@@ -1,5 +1,4 @@
-﻿using BepInEx.Logging;
-using Buttplug.Client;
+﻿using Buttplug.Client;
 using Buttplug.Client.Connectors.WebsocketConnector;
 using Buttplug.Core;
 using System;
