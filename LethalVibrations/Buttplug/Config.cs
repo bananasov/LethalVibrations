@@ -94,7 +94,7 @@ namespace LethalVibrations.Buttplug
             VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
 
-            PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", true, "Vibrate when you press right click");
+            PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", false, "Vibrate when you press right click");
             PingScanDuration = ConfigFile.Bind("Vibrations.PingScan", "Duration", 0.3f, "Length of time to vibrate for");
             PingScanStrength = ConfigFile.Bind("Vibrations.PingScan", "Strength", 0.3f, "Change the strength of vibration");
         }
