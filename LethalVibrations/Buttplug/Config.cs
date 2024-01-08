@@ -42,10 +42,10 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> VibrateWalkieTalkieReceivedStrength { get; set; }
         #endregion
 
-        #region Shake screen vibration config entries
-        internal static ConfigEntry<bool> VibrateShakeScreenEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateShakeScreenDuration { get; set; }
-        internal static ConfigEntry<float> VibrateShakeScreenAmplifier { get; set; }
+        #region Screen shake vibration config entries
+        internal static ConfigEntry<bool> VibrateScreenShakeEnabled { get; set; }
+        internal static ConfigEntry<float> VibrateScreenShakeDuration { get; set; }
+        internal static ConfigEntry<float> VibrateScreenShakeAmplifier { get; set; }
         #endregion
 
         #region Scan ping vibration config entries
@@ -90,9 +90,9 @@ namespace LethalVibrations.Buttplug
             VibrateWalkieTalkieReceivedDuration = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateWalkieTalkieReceivedStrength = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Strength", 0.6f, "Change the strength of vibration");
 
-            VibrateShakeScreenEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
-            VibrateShakeScreenDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateShakeScreenAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
+            VibrateScreenShakeEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
+            VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
+            VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
 
             PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", true, "Vibrate when you press right click");
             PingScanDuration = ConfigFile.Bind("Vibrations.PingScan", "Duration", 0.3f, "Length of time to vibrate for");
