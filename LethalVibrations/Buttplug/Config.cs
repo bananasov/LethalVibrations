@@ -49,6 +49,12 @@ namespace LethalVibrations.Buttplug
 
         #endregion
 
+        #region Quota Reached config entries
+        internal static ConfigEntry<bool> QuotaReachedEnabled { get; set; }
+        internal static ConfigEntry<float> QuotaReachedDuration { get; set; }
+        internal static ConfigEntry<float> QuotaReachedStrength { get; set; }
+        #endregion
+
         static Config()
         {
             ConfigFile = new ConfigFile(Paths.ConfigPath + "\\LethalVibrations.cfg", true);
@@ -62,19 +68,33 @@ namespace LethalVibrations.Buttplug
 
             VibrateAmplifier =
                 ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
+
+            #region Rewarding stuff
             Rewarding = ConfigFile.Bind("Vibrations", "Rewarding", true, "Enable rewarding");
-            
-            VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
-            VibrateDamageReceivedDuration = ConfigFile.Bind("Vibrations.DamageReceived", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateDamageReceivedAmplifier = ConfigFile.Bind("Vibrations.DamageReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
             
             VibrateDamageDealtEnabled = ConfigFile.Bind("Vibrations.DamageDealt", "Enabled", true, "Vibrate when you deal damage");
             VibrateDamageDealtDuration = ConfigFile.Bind("Vibrations.DamageDealt", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateDamageDealtStrength = ConfigFile.Bind("Vibrations.DamageDealt", "Strength", 0.5f, "Change the strength of vibration");
             
+            QuotaReachedEnabled = ConfigFile.Bind("Vibrations.QuotaReached", "Enabled", true, "Vibrate when you reach the quota");
+            QuotaReachedDuration = ConfigFile.Bind("Vibrations.QuotaReached", "Duration", 1.0f, "Length of time to vibrate for");
+            QuotaReachedStrength = ConfigFile.Bind("Vibrations.QuotaReached", "Strength", 0.5f, "Change the strength of vibration");
+            
+            #endregion
+
+            #region Punishing stuff  
+            VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
+            VibrateDamageReceivedDuration = ConfigFile.Bind("Vibrations.DamageReceived", "Duration", 1.0f, "Length of time to vibrate for");
+            VibrateDamageReceivedAmplifier = ConfigFile.Bind("Vibrations.DamageReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
+            
             VibrateKilledEnabled = ConfigFile.Bind("Vibrations.PlayerKilled", "Enabled", false, "Vibrate when you die");
             VibrateKilledDuration = ConfigFile.Bind("Vibrations.PlayerKilled", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateKilledStrength = ConfigFile.Bind("Vibrations.PlayerKilled", "Strength", 1.0f, "Change the strength of vibration");
+
+            PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", false, "Vibrate when you press right click");
+            PingScanDuration = ConfigFile.Bind("Vibrations.PingScan", "Duration", 0.3f, "Length of time to vibrate for");
+            PingScanStrength = ConfigFile.Bind("Vibrations.PingScan", "Strength", 0.3f, "Change the strength of vibration");
+            #endregion
             
             VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
             VibrateItemChargerChargeDuration = ConfigFile.Bind("Vibrations.ItemCharge", "Duration", 1.0f, "Length of time to vibrate for");
@@ -83,10 +103,6 @@ namespace LethalVibrations.Buttplug
             VibrateScreenShakeEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
             VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
-
-            PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", false, "Vibrate when you press right click");
-            PingScanDuration = ConfigFile.Bind("Vibrations.PingScan", "Duration", 0.3f, "Length of time to vibrate for");
-            PingScanStrength = ConfigFile.Bind("Vibrations.PingScan", "Strength", 0.3f, "Change the strength of vibration");
         }
     }
 }

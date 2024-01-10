@@ -32,6 +32,18 @@ namespace LethalVibrations.Patches
             }
         }
 
+        [HarmonyPatch(typeof(HUDManager), "DisplayNewDeadline")]
+        [HarmonyPostfix]
+        private static void DisplayNewDeadlinePatch()
+        {
+            Plugin.Mls.LogDebug($"DisplayNewDeadline got called");
+            
+            if (Plugin.DeviceManager.IsConnected() && Config.QuotaReachedEnabled.Value)
+            {
+                Plugin.DeviceManager.VibrateConnectedDevices(Config.QuotaReachedStrength.Value, Config.QuotaReachedDuration.Value);
+            }
+        }
+
         [HarmonyPatch(typeof(HUDManager), "PingScan_performed")]
         [HarmonyPostfix]
         private static void PingScan_performedPatch()
