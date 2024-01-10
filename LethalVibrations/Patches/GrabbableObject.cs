@@ -13,6 +13,9 @@ namespace LethalVibrations.Patches
             if (!__instance.itemProperties.isScrap)
                 return;
 
+            if (__instance.isInShipRoom)
+                return;
+
             Plugin.Mls.LogDebug("GrabItemOnClient called");
             if (Plugin.DeviceManager.IsConnected() && Config.Rewarding.Value)
             {
