@@ -62,7 +62,7 @@ namespace LethalVibrations.Buttplug
 
             VibrateAmplifier =
                 ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
-            Rewarding = ConfigFile.Bind("Vibrations", "GoodBoyMode", false, "Enable rewarding");
+            Rewarding = ConfigFile.Bind("Vibrations", "Rewarding", true, "Enable rewarding");
             
             VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
             VibrateDamageReceivedDuration = ConfigFile.Bind("Vibrations.DamageReceived", "Duration", 1.0f, "Length of time to vibrate for");
@@ -72,7 +72,7 @@ namespace LethalVibrations.Buttplug
             VibrateDamageDealtDuration = ConfigFile.Bind("Vibrations.DamageDealt", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateDamageDealtStrength = ConfigFile.Bind("Vibrations.DamageDealt", "Strength", 0.5f, "Change the strength of vibration");
             
-            VibrateKilledEnabled = ConfigFile.Bind("Vibrations.PlayerKilled", "Enabled", true, "Vibrate when you die");
+            VibrateKilledEnabled = ConfigFile.Bind("Vibrations.PlayerKilled", "Enabled", false, "Vibrate when you die");
             VibrateKilledDuration = ConfigFile.Bind("Vibrations.PlayerKilled", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateKilledStrength = ConfigFile.Bind("Vibrations.PlayerKilled", "Strength", 1.0f, "Change the strength of vibration");
             
