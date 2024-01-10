@@ -35,12 +35,6 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> VibrateItemChargerChargeDuration { get; set; }
         internal static ConfigEntry<float> VibrateItemChargerChargeStrength { get; set; }
         #endregion
-        
-        #region Walkie talkie vibration config entries
-        internal static ConfigEntry<bool> VibrateWalkieTalkieReceivedEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateWalkieTalkieReceivedDuration { get; set; }
-        internal static ConfigEntry<float> VibrateWalkieTalkieReceivedStrength { get; set; }
-        #endregion
 
         #region Screen shake vibration config entries
         internal static ConfigEntry<bool> VibrateScreenShakeEnabled { get; set; }
@@ -85,10 +79,6 @@ namespace LethalVibrations.Buttplug
             VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
             VibrateItemChargerChargeDuration = ConfigFile.Bind("Vibrations.ItemCharge", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateItemChargerChargeStrength = ConfigFile.Bind("Vibrations.ItemCharge", "Strength", 0.4f, "Change the strength of vibration");
-            
-            VibrateWalkieTalkieReceivedEnabled = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Enabled", false, "Vibrate when you receive audio from the WalkieTalkie");
-            VibrateWalkieTalkieReceivedDuration = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateWalkieTalkieReceivedStrength = ConfigFile.Bind("Vibrations.WalkieTalkieReceived", "Strength", 0.6f, "Change the strength of vibration");
 
             VibrateScreenShakeEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
             VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
