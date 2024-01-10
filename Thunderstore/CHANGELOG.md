@@ -3,7 +3,29 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
-## [0.0.4](https://github.com/bananasov/LethalVibrations/compare/v0.0.3..0.0.4) - 2024-01-03
+## [0.0.5](https://github.com/bananasov/LethalVibrations/compare/v0.0.4..0.0.5) - 2024-01-10
+
+### Bug Fixes
+
+- Fix incorrect variable placement in Justfile - ([00a8251](https://github.com/bananasov/LethalVibrations/commit/00a825123d07c76ea9e5e65c4a09103f0d908f4b)) - sovnya
+- Rename screen vibration variables - ([7e34385](https://github.com/bananasov/LethalVibrations/commit/7e3438561bcb3c476782386a1c74fe8293f17633)) - sovnya
+- Disable ping scan vibrations by default - ([65ea2e4](https://github.com/bananasov/LethalVibrations/commit/65ea2e4becc544b635693e46a5e31e6566ca151c)) - sovnya
+- Fix the stupid BepInEx annotations - ([694e585](https://github.com/bananasov/LethalVibrations/commit/694e58572104c8552ce268568a657bfe87ed77ff)) - sovnya
+- Tweak config to reinforce good behavior - ([0cd0557](https://github.com/bananasov/LethalVibrations/commit/0cd05577a5a973f7e19ab743c8a4b98d8854ff9c)) - sovnya
+- Reduce the amount of times you get vibrated when you pick up an item - ([273673e](https://github.com/bananasov/LethalVibrations/commit/273673e4adb121c14543b3d3c8c168c791af0817)) - sovnya
+
+### Features
+
+- Add vibration on quota reached - ([71a56b7](https://github.com/bananasov/LethalVibrations/commit/71a56b767cd8c47fc0dee5bb15441abaf4498aa2)) - sovnya
+- Add vibrate on round survival - ([96b01e8](https://github.com/bananasov/LethalVibrations/commit/96b01e8eb791527020239feab50ebe85e30fd153)) - sovnya
+
+### Miscellaneous Chores
+
+- Remove unused imports - ([0d0582e](https://github.com/bananasov/LethalVibrations/commit/0d0582eef8d411e01545e316e6729c0aa4356f52)) - sovnya
+- Remove unused walkie talkie variables - ([2bc1c29](https://github.com/bananasov/LethalVibrations/commit/2bc1c296c575335a087f120e365ce28527df2d60)) - sovnya
+
+---
+## [0.0.4](https://github.com/bananasov/LethalVibrations/compare/v0.0.3..v0.0.4) - 2024-01-03
 
 ### Bug Fixes
 
