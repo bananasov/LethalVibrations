@@ -29,6 +29,7 @@ namespace LethalVibrations
             harmony.PatchAll(typeof(Patches.EnemyAIPatches));
             harmony.PatchAll(typeof(Patches.HUDManagerPatches));
             harmony.PatchAll(typeof(Patches.GrabbableObjectPatches));
+            harmony.PatchAll(typeof(Patches.RoundManagerPatches));
 
             Logger.LogInfo($"Plugin {PLUGIN_NAME} ({PLUGIN_VERSION}) is loaded!");
         }

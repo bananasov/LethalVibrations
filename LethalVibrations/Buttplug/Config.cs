@@ -54,6 +54,12 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> QuotaReachedDuration { get; set; }
         internal static ConfigEntry<float> QuotaReachedStrength { get; set; }
         #endregion
+        
+        #region Round Survival config entries
+        internal static ConfigEntry<bool> RoundSurvivalEnabled { get; set; }
+        internal static ConfigEntry<float> RoundSurvivalDuration { get; set; }
+        internal static ConfigEntry<float> RoundSurvivalStrength { get; set; }
+        #endregion
 
         static Config()
         {
@@ -80,6 +86,9 @@ namespace LethalVibrations.Buttplug
             QuotaReachedDuration = ConfigFile.Bind("Vibrations.QuotaReached", "Duration", 1.0f, "Length of time to vibrate for");
             QuotaReachedStrength = ConfigFile.Bind("Vibrations.QuotaReached", "Strength", 0.5f, "Change the strength of vibration");
             
+            RoundSurvivalEnabled = ConfigFile.Bind("Vibrations.RoundSurvival", "Enabled", true, "Vibrate when you survive the round");
+            RoundSurvivalDuration = ConfigFile.Bind("Vibrations.RoundSurvival", "Duration", 1.0f, "Length of time to vibrate for");
+            RoundSurvivalStrength = ConfigFile.Bind("Vibrations.RoundSurvival", "Strength", 0.3f, "Change the strength of vibration");
             #endregion
 
             #region Punishing stuff  
