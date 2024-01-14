@@ -7,7 +7,7 @@ namespace LethalVibrations.Patches
     {
         [HarmonyPatch(typeof(NoisemakerProp), "ItemActivate")]
         [HarmonyPostfix]
-        private static void ChargeItemPatch(NoisemakerProp __instance)
+        private static void ItemActivatePatch(NoisemakerProp __instance)
         {
             Plugin.Mls.LogDebug($"NoisemakerProp.ItemActivate got called: {__instance.itemProperties.itemName}");
 

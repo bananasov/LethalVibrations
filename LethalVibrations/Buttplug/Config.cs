@@ -119,7 +119,7 @@ namespace LethalVibrations.Buttplug
             VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
             
-            AirhornEnabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", true, "Vibrate when someone airs the horn");
+            AirhornEnabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", false, "Vibrate when someone airs the horn");
             AirhornDuration = ConfigFile.Bind("Vibrations.Airhorn", "Duration", 1.0f, "Length of time to vibrate for");
             AirhornStrength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.1f, "Change the amplification of vibration");
         }
