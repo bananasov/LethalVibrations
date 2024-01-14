@@ -60,6 +60,12 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> RoundSurvivalDuration { get; set; }
         internal static ConfigEntry<float> RoundSurvivalStrength { get; set; }
         #endregion
+        
+        #region Airhorn config entries
+        internal static ConfigEntry<bool> AirhornEnabled { get; set; }
+        internal static ConfigEntry<float> AirhornDuration { get; set; }
+        internal static ConfigEntry<float> AirhornStrength { get; set; }
+        #endregion
 
         static Config()
         {
@@ -112,6 +118,10 @@ namespace LethalVibrations.Buttplug
             VibrateScreenShakeEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
             VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
+            
+            AirhornEnabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", true, "Vibrate when someone airs the horn");
+            AirhornDuration = ConfigFile.Bind("Vibrations.Airhorn", "Duration", 1.0f, "Length of time to vibrate for");
+            AirhornStrength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.1f, "Change the amplification of vibration");
         }
     }
 }
