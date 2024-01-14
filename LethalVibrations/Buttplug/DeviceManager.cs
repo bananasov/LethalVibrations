@@ -43,7 +43,7 @@ namespace LethalVibrations.Buttplug
             }
         }
 
-        public void VibrateConnectedDevices(double intensity, float time)
+        public void VibrateConnectedDevicesWithDuration(double intensity, float time)
         {
             intensity += Config.VibrateAmplifier.Value;
 
@@ -56,12 +56,26 @@ namespace LethalVibrations.Buttplug
 
             ConnectedDevices.ForEach(Action);
         }
+        
+        /// <summary>
+        ///  This has to be manually stopped
+        /// </summary>
+        public void VibrateConnectedDevices(double intensity)
+        {
+            intensity += Config.VibrateAmplifier.Value;
+
+            async void Action(ButtplugClientDevice device)
+            {
+                await device.VibrateAsync(Mathf.Clamp((float)intensity, 0f, 1.0f));
+            }
+
+            ConnectedDevices.ForEach(Action);
+        }
 
         public void StopConnectedDevices()
         {
             ConnectedDevices.ForEach(async (ButtplugClientDevice device) => await device.Stop());
         }
-
 
         internal void CleanUp()
         {

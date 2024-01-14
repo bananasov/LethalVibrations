@@ -16,16 +16,16 @@ namespace LethalVibrations.Patches
             switch (shakeType)
             {
                 case ScreenShakeType.Small:
-                    Plugin.DeviceManager.VibrateConnectedDevices(0.3f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value);
+                    Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(0.3f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value);
                     return;
                 case ScreenShakeType.Big:
-                    Plugin.DeviceManager.VibrateConnectedDevices(0.6f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value);
+                    Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(0.6f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value);
                     return;
                 case ScreenShakeType.Long:
-                    Plugin.DeviceManager.VibrateConnectedDevices(0.5f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value + 0.6f);
+                    Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(0.5f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value + 0.6f);
                     return;
                 case ScreenShakeType.VeryStrong:
-                    Plugin.DeviceManager.VibrateConnectedDevices(0.9f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value + 0.3f);
+                    Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(0.9f + Config.VibrateScreenShakeAmplifier.Value, Config.VibrateScreenShakeDuration.Value + 0.3f);
                     return;
                 default:
                     return;
@@ -40,7 +40,7 @@ namespace LethalVibrations.Patches
             
             if (Plugin.DeviceManager.IsConnected() && Config.QuotaReachedEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(Config.QuotaReachedStrength.Value, Config.QuotaReachedDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(Config.QuotaReachedStrength.Value, Config.QuotaReachedDuration.Value);
             }
         }
 
@@ -52,7 +52,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.PingScanEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(Config.PingScanStrength.Value, Config.PingScanDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(Config.PingScanStrength.Value, Config.PingScanDuration.Value);
             }
         }
     }

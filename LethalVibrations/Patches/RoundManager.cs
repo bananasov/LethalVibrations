@@ -14,7 +14,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.RoundSurvivalEnabled.Value && !GameNetworkManager.Instance.localPlayerController.isPlayerDead)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(Config.RoundSurvivalStrength.Value, Config.RoundSurvivalDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(Config.RoundSurvivalStrength.Value, Config.RoundSurvivalDuration.Value);
             }
         }
     }

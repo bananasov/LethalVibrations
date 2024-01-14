@@ -16,7 +16,7 @@ namespace LethalVibrations.Patches
 
             if (Plugin.DeviceManager.IsConnected() && Config.AirhornEnabled.Value)
             {
-                Plugin.DeviceManager.VibrateConnectedDevices(Config.AirhornStrength.Value, Config.AirhornDuration.Value);
+                Plugin.DeviceManager.VibrateConnectedDevicesWithDuration(Config.AirhornStrength.Value, Config.AirhornDuration.Value);
             }
         }
     }   
