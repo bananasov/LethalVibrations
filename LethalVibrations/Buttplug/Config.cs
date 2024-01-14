@@ -66,6 +66,11 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> AirhornDuration { get; set; }
         internal static ConfigEntry<float> AirhornStrength { get; set; }
         #endregion
+        
+        #region Ship Horn config entries
+        internal static ConfigEntry<bool> ShipHornEnabled { get; set; }
+        internal static ConfigEntry<float> ShipHornStrength { get; set; }
+        #endregion
 
         static Config()
         {
@@ -119,9 +124,12 @@ namespace LethalVibrations.Buttplug
             VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
             VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
             
-            AirhornEnabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", false, "Vibrate when someone airs the horn");
+            AirhornEnabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", false, "Vibrate when someone uses the airhorn");
             AirhornDuration = ConfigFile.Bind("Vibrations.Airhorn", "Duration", 1.0f, "Length of time to vibrate for");
-            AirhornStrength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.1f, "Change the amplification of vibration");
+            AirhornStrength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.1f, "Change the intensity of vibration");
+            
+            ShipHornEnabled = ConfigFile.Bind("Vibrations.ShipHorn", "Enabled", true, "Vibrate when someone airs the ships horn");
+            ShipHornStrength = ConfigFile.Bind("Vibrations.ShipHorn", "Strength", 0.5f, "Change the intensity of vibration");
         }
     }
 }
