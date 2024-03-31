@@ -1,6 +1,6 @@
 {
   "name": "LethalHaptics",
-  "version_number": "0.0.5",
+  "version_number": "0.0.6",
   "website_url": "https://github.com/bananasov/LethalVibrations",
   "description": "Connect your buttplug to Lethal Company",
   "dependencies": [

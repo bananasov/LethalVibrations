@@ -3,7 +3,23 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
-## [0.0.5](https://github.com/bananasov/LethalVibrations/compare/v0.0.4..0.0.5) - 2024-01-10
+## [0.0.6](https://github.com/bananasov/LethalVibrations/compare/v0.0.5..0.0.6) - 2024-03-31
+
+### Bug Fixes
+
+- Remove the stupid BepInEx stuff i did - ([f7213c0](https://github.com/bananasov/LethalVibrations/commit/f7213c01bbaa4f357786d54f56822b8c636c0c5f)) - sovnya
+- Disable airhorn vibrations by default - ([b24efcf](https://github.com/bananasov/LethalVibrations/commit/b24efcf0a55e5ba1a7d54c3f1b8804ebec7a77ab)) - sovnya
+- Let other clients be able to vibrate your plug when the ship horn is pulled - ([5967d29](https://github.com/bananasov/LethalVibrations/commit/5967d2939c7022d2c68ab19dd13f385baccf4d01)) - sovnya
+
+### Features
+
+- Vibrate on airhorn - ([79e25d1](https://github.com/bananasov/LethalVibrations/commit/79e25d10ce062e53e18378549765b999d590d13c)) - sovnya
+- Vibration upon ship horn pulled - ([cf174f7](https://github.com/bananasov/LethalVibrations/commit/cf174f7694999bb0ca31e68fbb43da0ae47360be)) - sovnya
+- Separate timed vibration functions - ([1251987](https://github.com/bananasov/LethalVibrations/commit/1251987193cebf61644e37072bd335fbf4886048)) - sovnya
+- Add stun grenade explosion vibration - ([32f7595](https://github.com/bananasov/LethalVibrations/commit/32f7595623fdafdd3f56f306fe0b235b45d4dc07)) - sovnya
+
+---
+## [0.0.5](https://github.com/bananasov/LethalVibrations/compare/v0.0.4..v0.0.5) - 2024-01-10
 
 ### Bug Fixes
 
