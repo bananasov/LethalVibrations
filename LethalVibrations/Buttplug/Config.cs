@@ -72,6 +72,11 @@ namespace LethalVibrations.Buttplug
         internal static ConfigEntry<float> ShipHornStrength { get; set; }
         #endregion
 
+        #region Flashbang/Stun Grenade config entries
+        internal static ConfigEntry<bool> FlashbangEnabled { get; set; }
+        internal static ConfigEntry<float> FlashbangStrength { get; set; }
+        #endregion
+
         static Config()
         {
             ConfigFile = new ConfigFile(Paths.ConfigPath + "\\LethalVibrations.cfg", true);
@@ -130,6 +135,9 @@ namespace LethalVibrations.Buttplug
             
             ShipHornEnabled = ConfigFile.Bind("Vibrations.ShipHorn", "Enabled", true, "Vibrate when someone airs the ships horn");
             ShipHornStrength = ConfigFile.Bind("Vibrations.ShipHorn", "Strength", 0.5f, "Change the intensity of vibration");
+            
+            FlashbangEnabled = ConfigFile.Bind("Vibrations.Flashbang", "Enabled", true, "Vibrate when a flashbang goes off");
+            FlashbangStrength = ConfigFile.Bind("Vibrations.Flashbang", "Strength", 0.5f, "Change the intensity of vibration");
         }
     }
 }

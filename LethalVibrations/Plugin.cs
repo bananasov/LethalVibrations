@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using LethalVibrations.Buttplug;
@@ -27,6 +27,7 @@ namespace LethalVibrations
             harmony.PatchAll(typeof(Patches.RoundManagerPatches));
             harmony.PatchAll(typeof(Patches.NoisemakerPropPatches));
             harmony.PatchAll(typeof(Patches.ShipAlarmCordPatches));
+            harmony.PatchAll(typeof(Patches.StunGrenadeItemPatches));
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_NAME} ({PluginInfo.PLUGIN_VERSION}) is loaded!");
         }
