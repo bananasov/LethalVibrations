@@ -15,9 +15,9 @@ public class EnemyAIHooks
     }
 
     private static void EnemyAIOnHitEnemy(On.EnemyAI.orig_HitEnemy orig, EnemyAI self, int force,
-        PlayerControllerB playerwhohit, bool playhitsfx, int hitid)
+        PlayerControllerB playerWhoHit, bool playerHitSfx, int hitID)
     {
-        orig(self, force, playerwhohit, playhitsfx, hitid);
+        orig(self, force, playerWhoHit, playerHitSfx, hitID);
 
         if (LethalVibrations.DeviceManager.IsConnected() && Config.Damage.Dealt.Enabled!.Value)
         {

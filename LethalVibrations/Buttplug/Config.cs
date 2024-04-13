@@ -115,7 +115,6 @@ internal static class Config
     internal static class ShipHorn
     {
         internal static ConfigEntry<bool>? Enabled { get; set; }
-        internal static ConfigEntry<float>? Duration { get; set; }
         internal static ConfigEntry<float>? Strength { get; set; }
     }
 
@@ -233,8 +232,6 @@ internal static class Config
         #region Ship horn related stuff
 
         ShipHorn.Enabled = ConfigFile.Bind("Vibrations.ShipHorn", "Enabled", true, "Vibrate when you use a ship horn");
-        ShipHorn.Duration = ConfigFile.Bind("Vibrations.ShipHorn", "Duration", 0.1f,
-            "How long to vibrate when you use a ship horn");
         ShipHorn.Strength = ConfigFile.Bind("Vibrations.ShipHorn", "Strength", 0.6f,
             "How strong to vibrate when you use a ship horn");
 
