@@ -1,5 +1,6 @@
-.vs/
 .idea/
-libs/
-*.DotSettings.user
+bin/
+obj/
+FodyWeavers.xsd
 *.zip
+*.user

@@ -1,39 +1,79 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net47</TargetFramework>
-		<RootNamespace>LethalVibrations</RootNamespace>
-		<AssemblyName>LethalVibrations</AssemblyName>
-		<Description>Lethal Company mod that makes your sex toys vibrate.</Description>
-		<Product>LethalVibrations</Product>
-		<Version>1.0.0</Version>
-		<PublishSingleFile>true</PublishSingleFile>
-		<LangVersion>latest</LangVersion>
-		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-	</PropertyGroup>
+<Project Sdk="Microsoft.NET.Sdk">
 
-	<ItemGroup>
-		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
-		<PackageReference Include="BepInEx.Core" Version="5.*" />
-		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
-		<PackageReference Include="Buttplug" Version="3.0.1" />
-		<PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1" />
-		<PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
-		<PackageReference Include="Costura.Fody" Version="5.7.0">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="Fody" Version="6.8.0">
-			<IncludeAssets>runtime; build; compile; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-	</ItemGroup>
+    <!-- BepInEx Properties -->
+    <PropertyGroup>
+        <AssemblyName>LethalVibrations</AssemblyName>
+        <Product>LethalVibrations</Product>
+    </PropertyGroup>
 
-	<ItemGroup>
-	  <Reference Include="Assembly-CSharp">
-	    <HintPath>..\libs\Assembly-CSharp.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Unity.Netcode.Runtime">
-	    <HintPath>..\libs\Unity.Netcode.Runtime.dll</HintPath>
-	  </Reference>
-	</ItemGroup>
+    <!-- Set Mod Version with MinVer -->
+    <Target Name="SetModVersion" BeforeTargets="AddGeneratedFile" DependsOnTargets="MinVer">
+        <PropertyGroup>
+            <PlainVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)</PlainVersion>
+            <BepInExPluginVersion>$(PlainVersion)</BepInExPluginVersion>
+        </PropertyGroup>
+    </Target>
+
+    <!-- Project Properties -->
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <RootNamespace>LethalVibrations</RootNamespace>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <!-- Enable Nullable for better IDE null-checking -->
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <!-- Set NuGet Sources -->
+    <PropertyGroup>
+        <RestoreAdditionalProjectSources>
+            https://api.nuget.org/v3/index.json;
+            https://nuget.bepinex.dev/v3/index.json
+        </RestoreAdditionalProjectSources>
+    </PropertyGroup>
+
+    <!-- Set MinVer Tag & Prerelease Properties -->
+    <PropertyGroup>
+        <MinVerDefaultPreReleaseIdentifiers>dev</MinVerDefaultPreReleaseIdentifiers>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+    </PropertyGroup>
+
+    <!-- Embed Debug Symbols for Easier Debugging -->
+    <PropertyGroup>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <!--
+        Trim the project path to prevent players from potentially
+        viewing Private Information in stack traces.
+        -->
+        <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
+    </PropertyGroup>
+
+    <!-- Primary Package References - BepInEx -->
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all"/>
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all"/>
+        <PackageReference Include="UnityEngine.Modules" Version="2022.3.9" PrivateAssets="all"/>
+        <PackageReference Include="MinVer" Version="4.*" PrivateAssets="all"/>
+        <PackageReference Include="Buttplug" Version="3.0.1"/>
+        <PackageReference Include="Buttplug.Client.Connectors.WebsocketConnector" Version="3.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <!-- Package References - Game Assemblies -->
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp" HintPath="$(LC_REFERENCES)\Assembly-CSharp.dll" Private="False"/>
+    </ItemGroup>
+
+    <!-- Package References - Game Assembly HookGen -->
+    <ItemGroup>
+        <Reference Include="MMHOOK_Assembly-CSharp" HintPath="$(MMHOOK_REFERENCES)\MMHOOK_Assembly-CSharp.dll" Private="False"/>
+    </ItemGroup>
 </Project>

@@ -1,143 +1,254 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 
-namespace LethalVibrations.Buttplug
+namespace LethalVibrations.Buttplug;
+
+internal static class Config
 {
-    internal class Config
+    private static ConfigFile ConfigFile { get; set; }
+
+    internal static ConfigEntry<string> ServerUri { get; set; }
+
+    internal static class Damage
     {
-        private static ConfigFile ConfigFile { get; set; }
-
-        internal static ConfigEntry<string> ServerUri { get; set; }
-
-        internal static ConfigEntry<float> VibrateAmplifier { get; set; }
-        internal static ConfigEntry<bool> Rewarding { get; set; }
-
-        #region Damage recieved config entries
-        internal static ConfigEntry<bool> VibrateDamageReceivedEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateDamageReceivedDuration { get; set; }
-        internal static ConfigEntry<float> VibrateDamageReceivedAmplifier { get; set; }
-        #endregion
-
-        #region Damage Dealt config entries
-        internal static ConfigEntry<bool> VibrateDamageDealtEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateDamageDealtDuration { get; set; }
-        internal static ConfigEntry<float> VibrateDamageDealtStrength { get; set; }
-        #endregion
-
-        #region Player death config entries
-        internal static ConfigEntry<bool> VibrateKilledEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateKilledDuration { get; set; }
-        internal static ConfigEntry<float> VibrateKilledStrength { get; set; }
-        #endregion
-
-        #region Charge item vibration config entries
-        internal static ConfigEntry<bool> VibrateItemChargerChargeEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateItemChargerChargeDuration { get; set; }
-        internal static ConfigEntry<float> VibrateItemChargerChargeStrength { get; set; }
-        #endregion
-
-        #region Screen shake vibration config entries
-        internal static ConfigEntry<bool> VibrateScreenShakeEnabled { get; set; }
-        internal static ConfigEntry<float> VibrateScreenShakeDuration { get; set; }
-        internal static ConfigEntry<float> VibrateScreenShakeAmplifier { get; set; }
-        #endregion
-
-        #region Scan ping vibration config entries
-        internal static ConfigEntry<bool> PingScanEnabled { get; set; }
-        internal static ConfigEntry<float> PingScanDuration { get; set; }
-        internal static ConfigEntry<float> PingScanStrength { get; set; }
-
-        #endregion
-
-        #region Quota Reached config entries
-        internal static ConfigEntry<bool> QuotaReachedEnabled { get; set; }
-        internal static ConfigEntry<float> QuotaReachedDuration { get; set; }
-        internal static ConfigEntry<float> QuotaReachedStrength { get; set; }
-        #endregion
-        
-        #region Round Survival config entries
-        internal static ConfigEntry<bool> RoundSurvivalEnabled { get; set; }
-        internal static ConfigEntry<float> RoundSurvivalDuration { get; set; }
-        internal static ConfigEntry<float> RoundSurvivalStrength { get; set; }
-        #endregion
-        
-        #region Airhorn config entries
-        internal static ConfigEntry<bool> AirhornEnabled { get; set; }
-        internal static ConfigEntry<float> AirhornDuration { get; set; }
-        internal static ConfigEntry<float> AirhornStrength { get; set; }
-        #endregion
-        
-        #region Ship Horn config entries
-        internal static ConfigEntry<bool> ShipHornEnabled { get; set; }
-        internal static ConfigEntry<float> ShipHornStrength { get; set; }
-        #endregion
-
-        #region Flashbang/Stun Grenade config entries
-        internal static ConfigEntry<bool> FlashbangEnabled { get; set; }
-        internal static ConfigEntry<float> FlashbangStrength { get; set; }
-        #endregion
-
-        static Config()
+        /// <summary>
+        /// Vibration config entries for when you take damage
+        /// </summary>
+        internal static class Taken
         {
-            ConfigFile = new ConfigFile(Paths.ConfigPath + "\\LethalVibrations.cfg", true);
-
-            ServerUri = ConfigFile.Bind(
-                "Devices",
-                "Server Uri",
-                "ws://localhost:12345",
-                "URI of the Intiface server."
-            );
-
-            VibrateAmplifier =
-                ConfigFile.Bind("Vibrations", "Amplifier", 0.0f, "Change the amplification of vibration");
-
-            #region Rewarding stuff
-            Rewarding = ConfigFile.Bind("Vibrations", "Rewarding", true, "Enable rewarding");
-            
-            VibrateDamageDealtEnabled = ConfigFile.Bind("Vibrations.DamageDealt", "Enabled", true, "Vibrate when you deal damage");
-            VibrateDamageDealtDuration = ConfigFile.Bind("Vibrations.DamageDealt", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateDamageDealtStrength = ConfigFile.Bind("Vibrations.DamageDealt", "Strength", 0.5f, "Change the strength of vibration");
-            
-            QuotaReachedEnabled = ConfigFile.Bind("Vibrations.QuotaReached", "Enabled", true, "Vibrate when you reach the quota");
-            QuotaReachedDuration = ConfigFile.Bind("Vibrations.QuotaReached", "Duration", 1.0f, "Length of time to vibrate for");
-            QuotaReachedStrength = ConfigFile.Bind("Vibrations.QuotaReached", "Strength", 0.5f, "Change the strength of vibration");
-            
-            RoundSurvivalEnabled = ConfigFile.Bind("Vibrations.RoundSurvival", "Enabled", true, "Vibrate when you survive the round");
-            RoundSurvivalDuration = ConfigFile.Bind("Vibrations.RoundSurvival", "Duration", 1.0f, "Length of time to vibrate for");
-            RoundSurvivalStrength = ConfigFile.Bind("Vibrations.RoundSurvival", "Strength", 0.3f, "Change the strength of vibration");
-            #endregion
-
-            #region Punishing stuff  
-            VibrateDamageReceivedEnabled = ConfigFile.Bind("Vibrations.DamageReceived", "Enabled", true, "Vibrate when you receive damage");
-            VibrateDamageReceivedDuration = ConfigFile.Bind("Vibrations.DamageReceived", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateDamageReceivedAmplifier = ConfigFile.Bind("Vibrations.DamageReceived", "Amplifier", 0.0f, "Change the amplification of vibration");
-            
-            VibrateKilledEnabled = ConfigFile.Bind("Vibrations.PlayerKilled", "Enabled", false, "Vibrate when you die");
-            VibrateKilledDuration = ConfigFile.Bind("Vibrations.PlayerKilled", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateKilledStrength = ConfigFile.Bind("Vibrations.PlayerKilled", "Strength", 1.0f, "Change the strength of vibration");
-
-            PingScanEnabled = ConfigFile.Bind("Vibrations.PingScan", "Enabled", false, "Vibrate when you press right click");
-            PingScanDuration = ConfigFile.Bind("Vibrations.PingScan", "Duration", 0.3f, "Length of time to vibrate for");
-            PingScanStrength = ConfigFile.Bind("Vibrations.PingScan", "Strength", 0.3f, "Change the strength of vibration");
-            #endregion
-            
-            VibrateItemChargerChargeEnabled = ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
-            VibrateItemChargerChargeDuration = ConfigFile.Bind("Vibrations.ItemCharge", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateItemChargerChargeStrength = ConfigFile.Bind("Vibrations.ItemCharge", "Strength", 0.4f, "Change the strength of vibration");
-
-            VibrateScreenShakeEnabled = ConfigFile.Bind("Vibrations.ShakeScreen", "Enabled", true, "Vibrate when your screen shakes");
-            VibrateScreenShakeDuration = ConfigFile.Bind("Vibrations.ShakeScreen", "Duration", 1.0f, "Length of time to vibrate for");
-            VibrateScreenShakeAmplifier = ConfigFile.Bind("Vibrations.ShakeScreen", "Amplifier", 0.0f, "Change the amplification of vibration");
-            
-            AirhornEnabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", false, "Vibrate when someone uses the airhorn");
-            AirhornDuration = ConfigFile.Bind("Vibrations.Airhorn", "Duration", 1.0f, "Length of time to vibrate for");
-            AirhornStrength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.1f, "Change the intensity of vibration");
-            
-            ShipHornEnabled = ConfigFile.Bind("Vibrations.ShipHorn", "Enabled", true, "Vibrate when someone airs the ships horn");
-            ShipHornStrength = ConfigFile.Bind("Vibrations.ShipHorn", "Strength", 0.5f, "Change the intensity of vibration");
-            
-            FlashbangEnabled = ConfigFile.Bind("Vibrations.Flashbang", "Enabled", true, "Vibrate when a flashbang goes off");
-            FlashbangStrength = ConfigFile.Bind("Vibrations.Flashbang", "Strength", 0.5f, "Change the intensity of vibration");
+            internal static ConfigEntry<bool>? Enabled { get; set; }
+            internal static ConfigEntry<float>? Duration { get; set; }
         }
+
+        /// <summary>
+        /// Vibration config entries for when you deal damage
+        /// </summary>
+        internal static class Dealt
+        {
+            internal static ConfigEntry<bool>? Enabled { get; set; }
+            internal static ConfigEntry<float>? Duration { get; set; }
+            internal static ConfigEntry<float>? Strength { get; set; }
+        }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you die
+    /// </summary>
+    internal static class Death
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for charging items 
+    /// </summary>
+    internal static class ItemCharge
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you pick up scrap
+    /// </summary>
+    internal static class ScrapPickup
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for screen shake
+    /// </summary>
+    internal static class ScreenShake
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for scanning (the thing you constantly do with your right mouse button)
+    /// </summary>
+    internal static class Scanning
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you reach your quota
+    /// </summary>
+    internal static class QuotaReached
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you survive a round
+    /// </summary>
+    internal static class RoundSurvival
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you use/uses (or anyone for that matter) the airhorn
+    /// </summary>
+    internal static class Airhorn
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you use/uses (or anyone for that matter) the ship horn
+    /// </summary>
+    internal static class ShipHorn
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    /// <summary>
+    /// Vibration config entries for when you use/uses (or anyone for that matter) the flashbang
+    /// </summary>
+    internal static class Flashbang
+    {
+        internal static ConfigEntry<bool>? Enabled { get; set; }
+        internal static ConfigEntry<float>? Duration { get; set; }
+        internal static ConfigEntry<float>? Strength { get; set; }
+    }
+
+    static Config()
+    {
+        ConfigFile = new ConfigFile(Paths.ConfigPath + "\\LethalVibrations.cfg", true);
+
+        ServerUri = ConfigFile.Bind("Devices", "Server Uri", "ws://localhost:12345", "URI of the Intiface server.");
+
+        #region Damage related stuff
+
+        Damage.Taken.Enabled =
+            ConfigFile.Bind("Vibrations.Damage.Taken", "Enabled", true, "Vibrate when you take damage");
+        Damage.Taken.Duration = ConfigFile.Bind("Vibrations.Damage.Taken", "Duration", 0.1f,
+            "How long to vibrate when you take damage");
+
+        Damage.Dealt.Enabled =
+            ConfigFile.Bind("Vibrations.Damage.Dealt", "Enabled", true, "Vibrate when you deal damage");
+        Damage.Dealt.Duration = ConfigFile.Bind("Vibrations.Damage.Dealt", "Duration", 0.1f,
+            "How long to vibrate when you deal damage");
+        Damage.Dealt.Strength = ConfigFile.Bind("Vibrations.Damage.Dealt", "Strength", 0.3f,
+            "How strong to vibrate when you deal damage");
+
+        #endregion
+
+        #region Death related stuff
+
+        Death.Enabled = ConfigFile.Bind("Vibrations.Death", "Enabled", true, "Vibrate when you die");
+        Death.Duration = ConfigFile.Bind("Vibrations.Death", "Duration", 1.0f, "How long to vibrate when you die");
+        Death.Strength = ConfigFile.Bind("Vibrations.Death", "Strength", 1.0f, "How strong to vibrate when you die");
+
+        #endregion
+
+        #region Scrap pickup related stuff
+
+        ScrapPickup.Enabled =
+            ConfigFile.Bind("Vibrations.ScrapPickup", "Enabled", true, "Vibrate when you pick up scrap");
+        ScrapPickup.Duration = ConfigFile.Bind("Vibrations.ScrapPickup", "Duration", 0.1f,
+            "How long to vibrate when you pick up scrap");
+        ScrapPickup.Strength = ConfigFile.Bind("Vibrations.ScrapPickup", "Strength", 0.3f,
+            "How strong to vibrate when you pick up scrap");
+
+        #endregion
+
+        #region Item charge related stuff
+
+        ItemCharge.Enabled =
+            ConfigFile.Bind("Vibrations.ItemCharge", "Enabled", true, "Vibrate when you charge an item");
+        ItemCharge.Duration = ConfigFile.Bind("Vibrations.ItemCharge", "Duration", 1.0f,
+            "How long to vibrate when you charge an item");
+        ItemCharge.Strength = ConfigFile.Bind("Vibrations.ItemCharge", "Strength", 1.0f,
+            "How strong to vibrate when you charge an item");
+
+        #endregion
+
+        #region Screen shake related stuff
+
+        ScreenShake.Enabled =
+            ConfigFile.Bind("Vibrations.ScreenShake", "Enabled", true, "Vibrate when you shake the screen");
+
+        #endregion
+
+        #region Scanning related stuff
+
+        Scanning.Enabled = ConfigFile.Bind("Vibrations.Scanning", "Enabled", true, "Vibrate when you scan");
+        Scanning.Duration =
+            ConfigFile.Bind("Vibrations.Scanning", "Duration", 0.1f, "How long to vibrate when you scan");
+        Scanning.Strength =
+            ConfigFile.Bind("Vibrations.Scanning", "Strength", 0.2f, "How strong to vibrate when you scan");
+
+        #endregion
+
+        #region Quota reached related stuff
+
+        QuotaReached.Enabled =
+            ConfigFile.Bind("Vibrations.QuotaReached", "Enabled", true, "Vibrate when you reach quota");
+        QuotaReached.Duration = ConfigFile.Bind("Vibrations.QuotaReached", "Duration", 1.0f,
+            "How long to vibrate when you reach quota");
+        QuotaReached.Strength = ConfigFile.Bind("Vibrations.QuotaReached", "Strength", 1.0f,
+            "How strong to vibrate when you reach quota");
+
+        #endregion
+
+        #region Round survival related stuff
+
+        RoundSurvival.Enabled =
+            ConfigFile.Bind("Vibrations.RoundSurvival", "Enabled", true, "Vibrate when you survive a round");
+        RoundSurvival.Duration = ConfigFile.Bind("Vibrations.RoundSurvival", "Duration", 0.5f,
+            "How long to vibrate when you survive a round");
+        RoundSurvival.Strength = ConfigFile.Bind("Vibrations.RoundSurvival", "Strength", 1.0f,
+            "How strong to vibrate when you survive a round");
+
+        #endregion
+
+        #region Airhorn related stuff
+
+        Airhorn.Enabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", true, "Vibrate when you use an airhorn");
+        Airhorn.Duration = ConfigFile.Bind("Vibrations.Airhorn", "Duration", 0.1f,
+            "How long to vibrate when you use an airhorn");
+        Airhorn.Strength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.2f,
+            "How strong to vibrate when you use an airhorn");
+
+        #endregion
+
+        #region Ship horn related stuff
+
+        ShipHorn.Enabled = ConfigFile.Bind("Vibrations.ShipHorn", "Enabled", true, "Vibrate when you use a ship horn");
+        ShipHorn.Duration = ConfigFile.Bind("Vibrations.ShipHorn", "Duration", 0.1f,
+            "How long to vibrate when you use a ship horn");
+        ShipHorn.Strength = ConfigFile.Bind("Vibrations.ShipHorn", "Strength", 0.6f,
+            "How strong to vibrate when you use a ship horn");
+
+        #endregion
+
+        #region Flashbang related stuff
+
+        Flashbang.Enabled =
+            ConfigFile.Bind("Vibrations.Flashbang", "Enabled", true, "Vibrate when you use a flashbang");
+        Flashbang.Duration = ConfigFile.Bind("Vibrations.Flashbang", "Duration", 0.1f,
+            "How long to vibrate when you use a flashbang");
+        Flashbang.Strength = ConfigFile.Bind("Vibrations.Flashbang", "Strength", 0.5f,
+            "How strong to vibrate when you use a flashbang");
+
+        #endregion
     }
 }
