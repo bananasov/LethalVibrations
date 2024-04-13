@@ -1,0 +1,13 @@
+﻿<Weavers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FodyWeavers.xsd">
+  <Costura>
+    <IncludeAssemblies>
+      System.Runtime.CompilerServices.Unsafe
+      System.Threading.Channels
+      System.Threading.Tasks.Extensions
+      System.ValueTuple
+      deniszykov.WebSocketListener
+      Buttplug
+      Buttplug.Client.Connectors.WebsocketConnector
+    </IncludeAssemblies>
+  </Costura>
+</Weavers>
