@@ -9,7 +9,7 @@ public class ItemChargerHooks
     public static void Init()
     {
         LethalVibrations.Logger.LogInfo("Patching ItemCharger functions.");
-        
+
         On.ItemCharger.ChargeItem += ItemChargerOnChargeItem;
     }
 

@@ -10,7 +10,7 @@ public class NoiseMakerPropHooks
     public static void Init()
     {
         LethalVibrations.Logger.LogInfo("Patching NoiseMakerProp functions.");
-        
+
         On.NoisemakerProp.ItemActivate += NoisemakerPropOnItemActivate;
     }
 
@@ -21,6 +21,8 @@ public class NoiseMakerPropHooks
 
         if (self.itemProperties.itemName != "Airhorn")
             return;
+
+        // TODO: Check distance to item
 
         if (LethalVibrations.DeviceManager.IsConnected() && Config.Airhorn.Enabled!.Value)
         {

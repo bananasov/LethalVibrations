@@ -20,7 +20,7 @@ public class ShipAlarmCordHooks
         ShipAlarmCord self, int playerPullingCord)
     {
         orig(self, playerPullingCord);
-        
+
         if (LethalVibrations.DeviceManager.IsConnected() && Config.ShipHorn.Enabled!.Value)
         {
             LethalVibrations.DeviceManager.VibrateConnectedDevices(Config.ShipHorn.Strength!.Value);
@@ -31,7 +31,7 @@ public class ShipAlarmCordHooks
         ShipAlarmCord self, int playerPullingCord)
     {
         orig(self, playerPullingCord);
-        
+
         if (LethalVibrations.DeviceManager.IsConnected() && Config.ShipHorn.Enabled!.Value)
         {
             LethalVibrations.DeviceManager.StopConnectedDevices();
