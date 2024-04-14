@@ -18,7 +18,7 @@ public class LethalVibrations : BaseUnityPlugin
         Logger = base.Logger;
         Instance = this;
         
-        DeviceManager = new DeviceManager("ViralTremors");
+        DeviceManager = new DeviceManager("LethalVibrations");
         DeviceManager.ConnectDevices();
 
         Hook();

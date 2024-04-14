@@ -77,6 +77,7 @@
     <!-- Package References - Game Assemblies -->
     <ItemGroup>
         <Reference Include="Assembly-CSharp" HintPath="$(LC_REFERENCES)\Assembly-CSharp.dll" Private="False"/>
+        <Reference Include="Unity.InputSystem" HintPath="$(LC_REFERENCES)\Unity.InputSystem.dll" Private="False"/>
     </ItemGroup>
 
     <!-- Package References - Game Assembly HookGen -->
