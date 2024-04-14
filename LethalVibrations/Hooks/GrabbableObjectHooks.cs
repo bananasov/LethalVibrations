@@ -9,7 +9,7 @@ public class GrabbableObjectHooks
     public static void Init()
     {
         LethalVibrations.Logger.LogInfo("Patching GrabbableObject functions.");
-        
+
         On.GrabbableObject.GrabItemOnClient += GrabbableObjectOnGrabItemOnClient;
     }
 
@@ -17,6 +17,12 @@ public class GrabbableObjectHooks
         GrabbableObject self)
     {
         orig(self);
+
+        if (!self.itemProperties.isScrap)
+            return;
+
+        if (self.isInShipRoom)
+            return;
 
         if (LethalVibrations.DeviceManager.IsConnected() && Config.ScrapPickup.Enabled!.Value)
         {

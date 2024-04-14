@@ -19,6 +19,8 @@ public class EnemyAIHooks
     {
         orig(self, force, playerWhoHit, playerHitSfx, hitID);
 
+        if (playerWhoHit.playerClientId != GameNetworkManager.Instance.localPlayerController.playerClientId) return;
+
         if (LethalVibrations.DeviceManager.IsConnected() && Config.Damage.Dealt.Enabled!.Value)
         {
             LethalVibrations.DeviceManager.VibrateConnectedDevicesWithDuration(Config.Damage.Dealt.Strength!.Value,
