@@ -11,7 +11,8 @@ namespace LethalVibrations.Buttplug
 
         internal static ConfigEntry<float> VibrateAmplifier { get; set; }
         internal static ConfigEntry<bool> Rewarding { get; set; }
-
+        internal static ConfigEntry<float> BaseVibration { get; set }
+        
         #region Damage recieved config entries
         internal static ConfigEntry<bool> VibrateDamageReceivedEnabled { get; set; }
         internal static ConfigEntry<float> VibrateDamageReceivedDuration { get; set; }
@@ -93,6 +94,9 @@ namespace LethalVibrations.Buttplug
 
             #region Rewarding stuff
             Rewarding = ConfigFile.Bind("Vibrations", "Rewarding", true, "Enable rewarding");
+
+            BaseVibration =
+                ConfigFile.Bind("Vibrations", "Base", 0.0f, "Change the base (constant) value of vibration");
             
             VibrateDamageDealtEnabled = ConfigFile.Bind("Vibrations.DamageDealt", "Enabled", true, "Vibrate when you deal damage");
             VibrateDamageDealtDuration = ConfigFile.Bind("Vibrations.DamageDealt", "Duration", 1.0f, "Length of time to vibrate for");
