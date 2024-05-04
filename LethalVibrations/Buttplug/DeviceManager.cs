@@ -13,7 +13,8 @@ namespace LethalVibrations.Buttplug
     {
         private List<ButtplugClientDevice> ConnectedDevices { get; set; }
         private ButtplugClient ButtplugClient { get; set; }
-
+        private float BaseVibration = Mathf.Clamp((float)Config.BaseVibration.Value, 0f, 1.0f)
+            
         public DeviceManager(string clientName)
         {
             ConnectedDevices = new List<ButtplugClientDevice>();
@@ -51,7 +52,7 @@ namespace LethalVibrations.Buttplug
             {
                 await device.VibrateAsync(Mathf.Clamp((float)intensity, 0f, 1.0f));
                 await Task.Delay((int)(time * 1000f));
-                await device.VibrateAsync(0.0f);
+                await device.VibrateAsync(BaseVibration);
             }
 
             ConnectedDevices.ForEach(Action);
