@@ -224,7 +224,7 @@ internal static class Config
         Airhorn.Enabled = ConfigFile.Bind("Vibrations.Airhorn", "Enabled", true, "Vibrate when you use an airhorn");
         Airhorn.Duration = ConfigFile.Bind("Vibrations.Airhorn", "Duration", 0.1f,
             "How long to vibrate when you use an airhorn");
-        Airhorn.Strength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.2f,
+        Airhorn.Strength = ConfigFile.Bind("Vibrations.Airhorn", "Strength", 0.6f,
             "How strong to vibrate when you use an airhorn");
 
         #endregion
@@ -243,7 +243,7 @@ internal static class Config
             ConfigFile.Bind("Vibrations.Flashbang", "Enabled", true, "Vibrate when you use a flashbang");
         Flashbang.Duration = ConfigFile.Bind("Vibrations.Flashbang", "Duration", 0.1f,
             "How long to vibrate when you use a flashbang");
-        Flashbang.Strength = ConfigFile.Bind("Vibrations.Flashbang", "Strength", 0.5f,
+        Flashbang.Strength = ConfigFile.Bind("Vibrations.Flashbang", "Strength", 1.0f,
             "How strong to vibrate when you use a flashbang");
 
         #endregion
