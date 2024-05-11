@@ -11,9 +11,9 @@ public class ShipAlarmCordHooks
     {
         LethalVibrations.Logger.LogInfo("Patching ShipAlarmCord functions.");
 
-        On.ShipAlarmCord.PullCordClientRpc += ShipAlarmCordOnPullCordClientRpc;
-        On.ShipAlarmCord.StopPullingCordClientRpc += ShipAlarmCordOnStopPullingCordClientRpc;
-        // Maybe i have to use transpilers for this? probably not but who knows lol
+        // FIXME: this doesn't seem to work.
+        // On.ShipAlarmCord.PullCordClientRpc += ShipAlarmCordOnPullCordClientRpc;
+        // On.ShipAlarmCord.StopPullingCordClientRpc += ShipAlarmCordOnStopPullingCordClientRpc;
     }
 
     private static void ShipAlarmCordOnStopPullingCordClientRpc(On.ShipAlarmCord.orig_StopPullingCordClientRpc orig,
