@@ -1,9 +1,32 @@
 # LethalHaptics
-
 A mod for Lethal Company to hook it up to your buttplug and other vibrating sex toys
 
-## How to use this Template
+> [!NOTE]
+> This is the v62 branch, LethalHaptics/LethalVibrations is being rewritten from the ground up using the [Official Lethal Company Modding template](https://github.com/LethalCompanyModding/LCM-Template-TSPublishing).
+> This should make it easier for me to maintain LethalHaptics.
 
-For a complete guide on using this template to create a simple `Hello World` project see [Your First Mod](https://lethalcompanymodding.github.io/Thunderstore/www/Guides/Your-First-Mod.html)
 
-Template Users: Make sure to remove this section after you create your project!
+## Setting up
+
+### Requirements
+- [Intiface Central](https://github.com/intiface/intiface-central/releases) or [Intiface Engine](https://github.com/intiface/intiface-engine/releases) (former preferred)
+- A buttplug or a device that can vibrate and has [buttplug.io](https://buttplug.io) support (See [here](https://iostindex.com/?filter0Availability=Available%2CDIY&filter1ButtplugSupport=4&filter2Features=OutputsVibrators) for a list of supported devices)
+
+### Installation
+
+#### Automatic
+
+- For a quick installation and organiser, [r2modman](https://github.com/ebkr/r2modmanPlus) or [Gale](https://github.com/Kesomannen/gale) can be used
+
+#### Manual
+- Install BepInEx (see [BepInEx Installation Guide](https://docs.bepinex.dev/articles/user_guide/installation/index.html))
+- Launch Lethal Company once with BepInEx installed to ensure that its working and needed folders are present
+- Navigate to your Lethal Company install directory and go to `./BepInEx/plugins`
+- Download the mod and unzip it in the installation directory
+
+### Usage
+- Open Intiface Central (or Engine if you know how to use that)
+- Start it via the big play button
+- Launch Lethal Company with the mod installed
+  - If it doesn't work, go to Intiface settings and enable `Listen on all network interfaces` in the server settings
+
