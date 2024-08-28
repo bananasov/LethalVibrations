@@ -1,0 +1,32 @@
+<Project>
+
+  <PropertyGroup>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/bananasov/LethalVibrations</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <PublishProfile>Thunderstore</PublishProfile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
+    <PathMap>$([System.IO.Path]::GetFullPath('$(SolutionDir)'))=./</PathMap>
+  </PropertyGroup>
+
+  <!-- Stole this from https://github.com/LC-ContentLib/ContentLib/blob/main/Directory.Build.props -->
+  <PropertyGroup>
+    <!-- 
+      Ensure SolutionDir is actually defined, because otherwise it might not be in every situation.
+      This situation specifically was importing projects in pubxml files and running `dotnet publish`.
+    -->
+    <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+  </PropertyGroup>
+</Project>

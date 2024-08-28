@@ -1,0 +1,4 @@
+It is customary to keep your patches separated in their own folder like this
+with each file named after the Type it patches. EG: If you're going to patch
+PlayerControllerB.SomeMethod you put the patch in PlayerControllerB.cs in this
+folder and then have either Harmony or MonoMod do its thing!

@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+
+    <!-- 
+      These were automatically generated for you by the template.
+      You should probably not edit them by hand if you've already published
+      to the Thunderstore.
+    -->
+    <AssemblyName>com.github.bananasov.LethalVibrations</AssemblyName>
+    <Authors>bananasov</Authors>
+    <Description>Connect your buttplug to Lethal Company</Description>
+    <Product>LethalHaptics</Product>
+    <!--
+      Except this, you should keep this up to date with your publishing tags.
+    -->
+    <Version>1.0.0</Version>
+
+    <!-- 
+      You shouldn't have to change these, but you could if you wanted to.
+    -->
+    <ProjectDepsFileName>$(Product).deps.json</ProjectDepsFileName>
+    <RootNamespace>$(Product)</RootNamespace>
+    <TargetName>$(Product)</TargetName>
+  </PropertyGroup>
+
+  <!--
+    Don't mess with anything below this line, it is required to build via 
+    github actions. If you are referencing other DLLs in your project than the
+    base game or unity DLLs they will need to be available via NUGET or copied
+    directly into your repo (which is pretty bad form) to build properly unless
+    they already exist on github in which case you can use submodules to track
+    the reference instead.
+  -->
+
+  <ItemGroup>
+    <PackageReference
+      Include="BepInEx.Analyzers"
+      PrivateAssets="all"
+      Version="1.*"
+    />
+    <PackageReference
+      Include="BepInEx.Core"
+      Version="5.4.*"
+    />
+    <PackageReference
+      Include="LethalCompany.GameLibs.Steam"
+      Version="62.0.0-ngd.0"
+    />
+
+    <!--
+      When adding additional references, ensure you use <Private>false</Private> to
+      ensure the DLL is explicitly NOT copied to the output directory. This is because
+      the DLLs are already included in the game and will be loaded from there.
+
+      Further, if the DLL is not included as part of the game, you should be using a
+      Dependency in your thunderstore.toml file to ensure the DLL is available to the
+      game when your mod is loaded.
+
+      Example: <Reference Include="Assembly-CSharp.dll" Private="false" />
+    -->
+    <Reference
+      Include="$(SolutionDir)/lib/MMHOOK_Assembly-CSharp.dll"
+      Private="false"
+    />
+  </ItemGroup>
+
+</Project>

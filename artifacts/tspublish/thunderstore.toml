@@ -1,0 +1,47 @@
+#Don't change this
+[config]
+  schemaVersion="0.0.1"
+
+[package]
+  #Edit this in the CSPROJ instead, the workflow will automate copying
+  #it here for you
+  description="Connect your buttplug to Lethal Company"
+
+  #Change this to true if your mod has any NSFW content. Please follow the rules
+  #on image and text content on your listing or your package may be removed
+  containsNsfwContent=false
+
+  #This is the link that shows up in the top right of the package page
+  #while it can be anything, I suggest keeping it as your github
+  websiteUrl="https://github.com/bananasov/LethalVibrations"
+
+  #This is where you put in dependencies in the format
+  #DependencyNamespace-ModName = "version.number.here"
+  [package.dependencies]
+    BepInEx-BepInExPack="5.4.2100"
+    Hamunii-AutoHookGenPatcher="1.0.4"
+
+#These settings will import the repo's README.md file and the icon in the
+#same folder as this TOML file as your icon. Please replace the icon with
+#something prettier! You do not need to modify these settings!
+[build]
+  icon  ="./icon.png"
+  outdir="./build"
+  readme="./../../README.md"
+
+  [[build.copy]]
+    source="./dist"
+    target="./"
+
+#Don't change this
+[general]
+  repository="https://thunderstore.io"
+
+#Don't change this
+[publish]
+  communities=["lethal-company"]
+  repository ="https://thunderstore.io"
+
+  #There is a list of tags in the tutorial
+  [publish.categories]
+    lethal-company=["mods", "clientside", "bepinex", "misc"]
