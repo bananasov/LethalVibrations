@@ -1,23 +1,17 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
-
-/*
-  Here are some basic resources on code style and naming conventions to help
-  you in your first CSharp plugin!
-
-  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions
-  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names
-  https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-namespaces
-*/
+using LethalHaptics.Buttplug;
 
 [BepInPlugin(LCMPluginInfo.PLUGIN_GUID, LCMPluginInfo.PLUGIN_NAME, LCMPluginInfo.PLUGIN_VERSION)]
 public class Plugin : BaseUnityPlugin
 {
   public static ManualLogSource Log = null!;
+  public static DeviceManager DeviceManager = null!;
 
   private void Awake()
   {
     Log = Logger;
+    DeviceManager = new DeviceManager("LethalHaptics", "ws://127.0.0.1:12345");
 
     Log.LogInfo($"Plugin {LCMPluginInfo.PLUGIN_NAME} is loaded!");
   }

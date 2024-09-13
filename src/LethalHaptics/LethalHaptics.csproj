@@ -49,6 +49,8 @@
       Version="62.0.0-ngd.0"
     />
 
+    <PackageReference Include="Buttplug" Version="4.0.0" />
+
     <!--
       When adding additional references, ensure you use <Private>false</Private> to
       ensure the DLL is explicitly NOT copied to the output directory. This is because
