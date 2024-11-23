@@ -9,7 +9,7 @@ namespace LethalHaptics.Buttplug;
 
 public class DeviceManager
 {
-    public List<ButtplugClientDevice> ConnectedDevices { get; set; }
+    private List<ButtplugClientDevice> ConnectedDevices { get; set; }
     private ButtplugClient ButtplugClient { get; set; }
     private string ServerUri { get; set; }
 
