@@ -1,0 +1,13 @@
+﻿using LethalHaptics.Utils;
+
+namespace LethalHaptics.Hooks;
+
+// ReSharper disable once UnusedType.Global
+public class StunGrenadeItemHooks : IHook
+{
+    [ButtplugPatch]
+    public void Initialize()
+    {
+        throw new System.NotImplementedException();
+    }
+}

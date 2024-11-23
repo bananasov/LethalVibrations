@@ -3,7 +3,4 @@
 namespace LethalHaptics.Utils;
 
 [AttributeUsage(AttributeTargets.Method)]
-public class ButtplugPatchAttribute : Attribute
-{
-    
-}
+public class ButtplugPatchAttribute : Attribute;

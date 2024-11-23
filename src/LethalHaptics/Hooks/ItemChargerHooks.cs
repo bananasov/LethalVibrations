@@ -3,11 +3,10 @@
 namespace LethalHaptics.Hooks;
 
 // ReSharper disable once UnusedType.Global
-public static class ItemChargerHooks
+public class ItemChargerHooks : IHook
 {
     [ButtplugPatch]
-    // ReSharper disable once UnusedMember.Global
-    public static void Initialize()
+    public void Initialize()
     {
         Plugin.Log.LogDebug("Patching Item Charger functions");
         
