@@ -1,5 +1,4 @@
-﻿using System;
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using LethalHaptics.Buttplug;
 using LethalHaptics.Utils;

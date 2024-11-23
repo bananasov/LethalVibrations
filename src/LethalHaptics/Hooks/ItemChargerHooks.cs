@@ -2,6 +2,7 @@
 
 namespace LethalHaptics.Hooks;
 
+// ReSharper disable once UnusedType.Global
 public static class ItemChargerHooks
 {
     [ButtplugPatch]
