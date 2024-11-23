@@ -46,7 +46,7 @@
     />
     <PackageReference
       Include="LethalCompany.GameLibs.Steam"
-      Version="62.0.0-ngd.0"
+      Version="67.0.0-ngd.0"
     />
 
     <PackageReference Include="Buttplug" Version="4.0.0" />
