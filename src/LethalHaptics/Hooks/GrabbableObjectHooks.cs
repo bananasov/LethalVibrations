@@ -3,10 +3,11 @@
 namespace LethalHaptics.Hooks;
 
 // ReSharper disable once UnusedType.Global
-public class GrabbableObjectHooks : IHook
+public class GrabbableObjectHooks
 {
     [ButtplugPatch]
-    public void Initialize()
+    // ReSharper disable once UnusedMember.Global
+    public static void Initialize()
     {
         On.GrabbableObject.GrabItemOnClient += GrabbableObjectOnGrabItemOnClient;
     }

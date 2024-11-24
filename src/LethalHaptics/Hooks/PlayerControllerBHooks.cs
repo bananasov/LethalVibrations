@@ -3,11 +3,12 @@
 namespace LethalHaptics.Hooks;
 
 // ReSharper disable once UnusedType.Global
-public class PlayerControllerBHooks : IHook
+public class PlayerControllerBHooks
 {
     [ButtplugPatch]
-    public void Initialize()
+    // ReSharper disable once UnusedMember.Global
+    public static void Initialize()
     {
-        throw new System.NotImplementedException();
+        Plugin.Log.LogDebug("Hooking PlayerController functions");
     }
 }

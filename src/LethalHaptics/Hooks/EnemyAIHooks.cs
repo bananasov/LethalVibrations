@@ -4,10 +4,11 @@ using LethalHaptics.Utils;
 namespace LethalHaptics.Hooks;
 
 // ReSharper disable once UnusedType.Global
-public class EnemyAIHooks : IHook
+public class EnemyAIHooks
 {
     [ButtplugPatch]
-    public void Initialize()
+    // ReSharper disable once UnusedMember.Global
+    public static void Initialize()
     {
         On.EnemyAI.HitEnemy += EnemyAIOnHitEnemy;
     }

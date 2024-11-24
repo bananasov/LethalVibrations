@@ -3,11 +3,12 @@
 namespace LethalHaptics.Hooks;
 
 // ReSharper disable once UnusedType.Global
-public class RoundManagerHooks : IHook
+public class RoundManagerHooks
 {
     [ButtplugPatch]
-    public void Initialize()
+    // ReSharper disable once UnusedMember.Global
+    public static void Initialize()
     {
-        throw new System.NotImplementedException();
+        Plugin.Log.LogDebug("Hooking RoundManager functions");
     }
 }

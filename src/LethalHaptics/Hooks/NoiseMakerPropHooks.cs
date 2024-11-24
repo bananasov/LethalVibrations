@@ -2,10 +2,12 @@
 
 namespace LethalHaptics.Hooks;
 
-public class NoiseMakerPropHooks : IHook
+// ReSharper disable once UnusedType.Global
+public class NoiseMakerPropHooks
 {
     [ButtplugPatch]
-    public void Initialize()
+    // ReSharper disable once UnusedMember.Global
+    public static void Initialize()
     {
         On.NoisemakerProp.ItemActivate += NoisemakerPropOnItemActivate;
     }

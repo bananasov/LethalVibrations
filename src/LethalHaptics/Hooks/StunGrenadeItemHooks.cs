@@ -3,11 +3,12 @@
 namespace LethalHaptics.Hooks;
 
 // ReSharper disable once UnusedType.Global
-public class StunGrenadeItemHooks : IHook
+public class StunGrenadeItemHooks
 {
     [ButtplugPatch]
-    public void Initialize()
+    // ReSharper disable once UnusedMember.Global
+    public static void Initialize()
     {
-        throw new System.NotImplementedException();
+        Plugin.Log.LogDebug("Hooking Stun Grenade functions");
     }
 }
